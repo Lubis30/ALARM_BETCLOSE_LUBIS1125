@@ -4,401 +4,477 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOGEL LUBIS · ALARM SYSTEM</title>
-<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&family=Black+Ops+One&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#020408;
-  --card:rgba(5,10,20,0.93);
-  --card2:rgba(8,15,30,0.98);
-  --gold:#ffd700;--gold2:#ffec6e;--gold3:#b8960c;
-  --goldg:linear-gradient(135deg,#b8960c,#ffd700,#ffec6e,#ffd700,#b8960c);
-  --cy:#00ffff;--grn:#00ff88;--red:#ff2244;--red2:#ff6b6b;--blu:#4488ff;
-  --txt:#e8f4ff;--txt2:#b0ccee;--dim:#2a3a50;
-  --f-disp:'Orbitron',sans-serif;
-  --f-ui:'Rajdhani',sans-serif;
-  --f-mono:'Share Tech Mono',monospace;
-  --f-black:'Black Ops One',sans-serif;
+:root {
+  --bg:      #01020a;
+  --glass:   rgba(8, 14, 32, 0.72);
+  --glass2:  rgba(10, 18, 40, 0.85);
+  --glass3:  rgba(4, 8, 20, 0.60);
+  --gold:    #fbbf24;
+  --gold2:   #fde68a;
+  --gold3:   #92400e;
+  --goldg:   linear-gradient(135deg, #92400e, #fbbf24, #fde68a, #fbbf24, #92400e);
+  --cyan:    #22d3ee;
+  --cyan2:   #a5f3fc;
+  --green:   #34d399;
+  --green2:  #a7f3d0;
+  --red:     #f87171;
+  --red2:    #fca5a5;
+  --amber:   #fbbf24;
+  --txt:     #f0f9ff;
+  --txt2:    #bae6fd;
+  --muted:   #475569;
+  --border:  rgba(251,191,36,0.18);
+  --border2: rgba(34,211,238,0.18);
+  --fo:      'Orbitron', sans-serif;
+  --fr:      'Rajdhani', sans-serif;
+  --fm:      'Share Tech Mono', monospace;
+  --fb:      'Black Ops One', sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--txt);font-family:var(--f-ui);font-weight:700;min-height:100vh;overflow-x:hidden;}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--txt); font-family:var(--fr); font-weight:600; min-height:100vh; overflow-x:hidden; }
 
-/* BG */
-.bg-wrap{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.bg-img{position:absolute;inset:0;background:url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7ff4ce39-7491-4855-aa1e-c7a9600f6244/df9z1d8-082ea0b6-8e65-457d-b96b-9d1d8dcc0c1a.jpg/v1/fill/w_1191,h_671,q_70,strp/the_batman_wallpaper_hd_by_ruben111416_df9z1d8-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIxIiwicGF0aCI6Ii9mLzdmZjRjZTM5LTc0OTEtNDg1NS1hYTFlLWM3YTk2MDBmNjI0NC9kZjl6MWQ4LTA4MmVhMGI2LThlNjUtNDU3ZC1iOTZiLTlkMWQ4ZGNjMGMxYS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19._mg7zd1a1wLo_c6_hPmRx-uV9swbnC98R5y4NHz3i4Q') center top/cover no-repeat;opacity:0.12;}
-.bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse 90% 50% at 50% 0%,rgba(0,80,160,0.15) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 20% 100%,rgba(255,0,128,0.07) 0%,transparent 50%),radial-gradient(ellipse 60% 40% at 80% 100%,rgba(0,255,128,0.07) 0%,transparent 50%),linear-gradient(180deg,rgba(2,4,8,0.8) 0%,rgba(2,4,8,0.2) 30%,rgba(2,4,8,0.5) 70%,rgba(2,4,8,0.97) 100%);}
-.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,0.022) 1px,transparent 1px);background-size:48px 48px;}
-.bg-scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 3px);}
+.bg { position:fixed; inset:0; z-index:0; pointer-events:none; }
+.bg-photo { position:absolute; inset:0; background:url('https://4kwallpapers.com/images/wallpapers/astronaut-space-suit-neon-stars-light-5k-5120x2881-6275.jpg') center center / cover no-repeat; opacity:0.50; }
+.bg-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(1,2,10,0.70) 0%, rgba(1,2,10,0.20) 30%, rgba(1,2,10,0.20) 70%, rgba(1,2,10,0.90) 100%), radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34,211,238,0.08) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 0% 100%, rgba(139,92,246,0.10) 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(34,211,238,0.08) 0%, transparent 55%); }
+.bg-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(34,211,238,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.028) 1px, transparent 1px); background-size:52px 52px; }
 
-/* RGB ANIMATIONS */
-@keyframes rgb-h{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
-@keyframes rgb-v{0%{background-position:50% 0%;}100%{background-position:50% 200%;}}
-@keyframes dot-rgb{
-  0%  {background:#ff0000;box-shadow:0 0 10px #ff0000,0 0 22px #ff0000,0 0 4px #fff;}
-  13% {background:#ff8800;box-shadow:0 0 10px #ff8800,0 0 22px #ff8800,0 0 4px #fff;}
-  26% {background:#ffff00;box-shadow:0 0 10px #ffff00,0 0 22px #ffff00,0 0 4px #fff;}
-  39% {background:#00ff44;box-shadow:0 0 10px #00ff44,0 0 22px #00ff44,0 0 4px #fff;}
-  52% {background:#00ffff;box-shadow:0 0 10px #00ffff,0 0 22px #00ffff,0 0 4px #fff;}
-  65% {background:#0088ff;box-shadow:0 0 10px #0088ff,0 0 22px #0088ff,0 0 4px #fff;}
-  78% {background:#ff00ff;box-shadow:0 0 10px #ff00ff,0 0 22px #ff00ff,0 0 4px #fff;}
-  91% {background:#ff0088;box-shadow:0 0 10px #ff0088,0 0 22px #ff0088,0 0 4px #fff;}
-  100%{background:#ff0000;box-shadow:0 0 10px #ff0000,0 0 22px #ff0000,0 0 4px #fff;}
+@keyframes rgb-h  { to { background-position:200% 50%; } }
+@keyframes rgb-v  { to { background-position:50% 200%; } }
+@keyframes dot-c  {
+  0%   { background:#ff0000; box-shadow:0 0 8px #ff0000,0 0 16px #ff0000; }
+  14%  { background:#ff8c00; box-shadow:0 0 8px #ff8c00,0 0 16px #ff8c00; }
+  28%  { background:#ffe000; box-shadow:0 0 8px #ffe000,0 0 16px #ffe000; }
+  42%  { background:#00ff55; box-shadow:0 0 8px #00ff55,0 0 16px #00ff55; }
+  57%  { background:#00eeff; box-shadow:0 0 8px #00eeff,0 0 16px #00eeff; }
+  71%  { background:#0077ff; box-shadow:0 0 8px #0077ff,0 0 16px #0077ff; }
+  85%  { background:#cc00ff; box-shadow:0 0 8px #cc00ff,0 0 16px #cc00ff; }
+  100% { background:#ff0000; box-shadow:0 0 8px #ff0000,0 0 16px #ff0000; }
 }
-@keyframes strip-glow{0%,100%{opacity:.9;}50%{opacity:1;}}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-@keyframes prog{to{width:100%;}}
-@keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5),0 0 8px #00ff88;}50%{box-shadow:0 0 0 9px rgba(0,255,136,0),0 0 3px #69ffb4;}}
-@keyframes card-soon{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.7);}50%{box-shadow:0 8px 30px rgba(0,0,0,.7),0 0 24px rgba(0,255,255,.12);}}
-@keyframes badge-blink{0%,100%{opacity:1;}50%{opacity:.25;}}
-@keyframes npulse{from{color:var(--txt);}to{color:var(--gold2);text-shadow:0 0 22px rgba(255,215,0,.6);}}
-@keyframes mblink{0%,100%{opacity:1;}50%{opacity:.35;}}
-@keyframes mpulse{0%{opacity:.9;transform:scale(1);}100%{opacity:0;transform:scale(1.05);}}
-@keyframes tin{0%{opacity:0;transform:scale(.74) translateY(34px);filter:blur(12px);}100%{opacity:1;transform:scale(1);filter:blur(0);}}
-@keyframes tout{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(.85);filter:blur(8px);}}
-@keyframes pb{from{width:100%;}to{width:0;}}
-@keyframes rbin{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
-@keyframes rbp{0%,100%{box-shadow:0 0 0 0 rgba(255,34,68,.5);}50%{box-shadow:0 0 0 9px rgba(255,34,68,0);}}
-@keyframes modal-in{from{opacity:0;transform:scale(.86) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
-@keyframes ripple{0%{opacity:.7;transform:scale(1);}100%{opacity:0;transform:scale(1.7);}}
-@keyframes cfin{from{opacity:0;transform:translate(-50%,-50%) scale(.8);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
-@keyframes cfout{to{opacity:0;transform:translate(-50%,-55%) scale(.93);}}
-@keyframes ascan{0%,100%{opacity:.7;}50%{opacity:1;}}
+@keyframes float   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+@keyframes blink   { 0%,100% { opacity:1; } 50% { opacity:0; } }
+@keyframes prog    { from { width:0; } to { width:100%; } }
+@keyframes fadein  { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+@keyframes pulse-g { 0%,100% { box-shadow:0 0 0 0 rgba(52,211,153,0.45); } 50% { box-shadow:0 0 0 8px rgba(52,211,153,0); } }
+@keyframes badge-bl{ 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+@keyframes modal-in{ from { opacity:0; transform:scale(0.88) translateY(24px); } to { opacity:1; transform:none; } }
+@keyframes mpulse  { 0% { opacity:0.8; transform:scale(1); } 100% { opacity:0; transform:scale(1.06); } }
+@keyframes t-in    { from { opacity:0; transform:scale(0.8) translateY(20px); filter:blur(8px); } to { opacity:1; transform:none; filter:none; } }
+@keyframes t-out   { to { opacity:0; transform:scale(0.9); filter:blur(4px); } }
+@keyframes pb      { from { width:100%; } to { width:0; } }
+@keyframes rbin    { from { transform:translateY(-100%); } to { transform:translateY(0); } }
+@keyframes soon-gl { 0%,100% { box-shadow:0 4px 20px rgba(0,0,0,0.6); } 50% { box-shadow:0 4px 20px rgba(0,0,0,0.6), 0 0 20px rgba(34,211,238,0.15); } }
+@keyframes numrise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 
-/* LED STRIP classes */
-.led-t,.led-b{
-  position:absolute;left:14px;right:14px;height:4px;border-radius:3px;z-index:4;
-  background:linear-gradient(90deg,#ff0000,#ff6600,#ffff00,#00ff44,#00ffff,#4488ff,#ff00ff,#ff0088,#ff0000);
-  background-size:200% 100%;
-  animation:rgb-h 3s linear infinite,strip-glow 2s ease-in-out infinite;
-  box-shadow:0 0 6px rgba(255,255,255,.35),0 0 12px rgba(255,255,255,.15);
+/* LED STRIPS */
+.led-strip { position:absolute; border-radius:2px; z-index:4; }
+.led-h { left:12px; right:12px; height:3px; background:linear-gradient(90deg,#ff0000,#ff8c00,#ffe000,#00ff55,#00eeff,#0077ff,#cc00ff,#ff0000); background-size:200% 100%; animation:rgb-h 3.5s linear infinite; box-shadow:0 0 6px rgba(255,255,255,0.3); }
+.led-v { top:12px; bottom:12px; width:3px; background:linear-gradient(180deg,#ff0000,#ff8c00,#ffe000,#00ff55,#00eeff,#0077ff,#cc00ff,#ff0000); background-size:100% 200%; animation:rgb-v 3.5s linear infinite; box-shadow:0 0 6px rgba(255,255,255,0.3); }
+.lt { top:-2px; } .lb { bottom:-2px; animation-direction:reverse; }
+.ll { left:-2px; } .lr { right:-2px; animation-delay:0.4s; }
+.led-dot { position:absolute; width:10px; height:10px; border-radius:50%; z-index:5; animation:dot-c 4s linear infinite; }
+.dtl { top:-5px; left:-5px; }
+.dtr { top:-5px; right:-5px; animation-delay:-1s; }
+.dbl { bottom:-5px; left:-5px; animation-delay:-2s; }
+.dbr { bottom:-5px; right:-5px; animation-delay:-3s; }
+
+/* WELCOME */
+#welcome { position:fixed; inset:0; z-index:9000; display:flex; align-items:center; justify-content:center; background:rgba(1,2,10,0.80); backdrop-filter:blur(6px); transition:opacity 1.6s ease, visibility 1.6s ease; }
+#welcome.hide { opacity:0; visibility:hidden; pointer-events:none; }
+.wbox { position:relative; text-align:center; padding:48px 60px; background:rgba(8,14,32,0.90); border:1px solid rgba(251,191,36,0.20); backdrop-filter:blur(20px); box-shadow:0 0 80px rgba(0,0,0,0.8), 0 0 30px rgba(34,211,238,0.06), inset 0 1px 0 rgba(255,255,255,0.06); }
+.wbox-bat  { font-size:52px; display:block; margin-bottom:16px; filter:drop-shadow(0 0 20px rgba(34,211,238,0.8)); animation:float 3s ease-in-out infinite; }
+.wbox-title{ font-family:var(--fb); font-size:clamp(32px,6vw,68px); letter-spacing:10px; background:var(--goldg); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 4px 16px rgba(251,191,36,0.4)); margin-bottom:6px; }
+.wbox-rule { height:1px; background:linear-gradient(90deg,transparent,rgba(251,191,36,0.5),transparent); margin:14px 0; }
+.wbox-sub  { font-family:var(--fm); font-size:9px; color:rgba(34,211,238,0.55); letter-spacing:6px; margin-bottom:36px; }
+.wbox-bar  { height:3px; background:rgba(255,255,255,0.06); margin-bottom:12px; border-radius:2px; overflow:hidden; }
+.wbox-fill { height:100%; border-radius:2px; width:0; background:linear-gradient(90deg,#ff0000,#ff8c00,#ffe000,#00ff55,#00eeff,#cc00ff); background-size:200% 100%; animation:prog 3.2s ease forwards 0.5s, rgb-h 3s linear infinite; }
+.wbox-stat { font-family:var(--fm); font-size:9px; color:rgba(251,191,36,0.65); letter-spacing:4px; }
+.wbox-stat::after { content:'▌'; animation:blink 0.7s step-end infinite; }
+
+#app { position:relative; z-index:1; max-width:1600px; margin:0 auto; padding:20px 24px 80px; opacity:0; transition:opacity 1s ease; }
+#app.on { opacity:1; animation:fadein 0.8s ease both; }
+
+/* TOPBAR */
+.topbar { display:flex; align-items:center; gap:16px; padding:14px 24px; background:var(--glass2); border:1px solid var(--border); backdrop-filter:blur(20px); margin-bottom:16px; position:relative; overflow:visible; }
+.topbar-logo { font-family:var(--fb); font-size:22px; letter-spacing:6px; background:var(--goldg); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 2px 10px rgba(251,191,36,0.4)); white-space:nowrap; }
+.topbar-sep { width:1px; height:28px; background:rgba(255,255,255,0.08); flex-shrink:0; }
+.topbar-sub { font-family:var(--fm); font-size:8px; color:rgba(34,211,238,0.55); letter-spacing:4px; flex:1; }
+.topbar-live { display:flex; align-items:center; gap:8px; }
+.topbar-dot  { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse-g 2s ease-in-out infinite; flex-shrink:0; }
+.topbar-live-txt { font-family:var(--fo); font-size:10px; font-weight:700; color:var(--green); letter-spacing:4px; text-shadow:0 0 8px rgba(52,211,153,0.6); }
+.topbar-time { font-family:var(--fo); font-size:18px; font-weight:900; color:var(--txt); letter-spacing:2px; text-shadow:0 0 14px rgba(255,255,255,0.15); white-space:nowrap; }
+.topbar-btns { display:flex; gap:6px; flex-shrink:0; }
+.tb-btn { font-family:var(--fo); font-size:8px; font-weight:700; letter-spacing:1.5px; padding:8px 14px; background:rgba(34,211,238,0.05); border:1px solid rgba(34,211,238,0.22); color:rgba(34,211,238,0.75); cursor:pointer; transition:all .2s; white-space:nowrap; }
+.tb-btn:hover { background:rgba(34,211,238,0.12); border-color:var(--cyan); color:var(--cyan); transform:translateY(-1px); }
+.tb-btn.ok  { border-color:rgba(52,211,153,0.35); color:rgba(52,211,153,0.8); }
+.tb-btn.bad { border-color:rgba(248,113,113,0.35); color:var(--red); }
+
+/* NOTIF BANNER */
+#notif-banner { display:none; align-items:center; gap:14px; padding:12px 24px; margin-bottom:12px; background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.25); backdrop-filter:blur(12px); }
+#notif-banner.show { display:flex; }
+.nb-txt { flex:1; }
+.nb-h   { font-family:var(--fo); font-size:10px; font-weight:800; color:var(--gold); letter-spacing:3px; margin-bottom:3px; }
+.nb-s   { font-family:var(--fr); font-size:13px; color:var(--muted); }
+.nb-ok  { font-family:var(--fo); font-size:8px; font-weight:700; letter-spacing:2px; padding:9px 20px; background:var(--goldg); color:#000; border:none; cursor:pointer; transition:all .2s; }
+.nb-ok:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(251,191,36,0.4); }
+.nb-x   { background:none; border:none; color:var(--muted); font-size:14px; cursor:pointer; padding:4px 8px; }
+
+/* ════════════════════════════════════
+   DASHBOARD ROW — ELEGANT 3D REDESIGN
+   ════════════════════════════════════ */
+.dash-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 1.35fr 1.35fr;
+  gap: 10px;
+  margin-bottom: 14px;
+  align-items: stretch;
 }
-.led-t{top:-2px;}
-.led-b{bottom:-2px;animation-direction:reverse,normal;}
-.led-l,.led-r{
-  position:absolute;top:14px;bottom:14px;width:4px;border-radius:3px;z-index:4;
-  background:linear-gradient(180deg,#ff0000,#ff6600,#ffff00,#00ff44,#00ffff,#4488ff,#ff00ff,#ff0088,#ff0000);
-  background-size:100% 200%;
-  animation:rgb-v 3s linear infinite,strip-glow 2s ease-in-out infinite;
-  box-shadow:0 0 6px rgba(255,255,255,.35),0 0 12px rgba(255,255,255,.15);
+
+/* ── Elegant stat tile ── */
+.tile {
+  position: relative;
+  padding: 22px 18px 18px;
+  isolation: isolate;
+  cursor: default;
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), box-shadow 0.35s;
+
+  background:
+    linear-gradient(150deg,
+      rgba(255,255,255,0.06) 0%,
+      rgba(255,255,255,0.02) 45%,
+      rgba(0,0,0,0.10) 100%),
+    rgba(7, 13, 30, 0.80);
+
+  border: 1px solid rgba(255,255,255,0.065);
+  border-top-color: rgba(255,255,255,0.12);
+  border-left-color: rgba(255,255,255,0.09);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    inset 0 -1px 0 rgba(0,0,0,0.35),
+    0 6px 20px rgba(0,0,0,0.55),
+    0 2px 6px rgba(0,0,0,0.30),
+    0 0 0 1px rgba(0,0,0,0.25);
+
+  backdrop-filter: blur(24px) saturate(1.5);
 }
-.led-l{left:-2px;}
-.led-r{right:-2px;animation-delay:0.5s;}
-/* Corner LED dots — always on */
-.led-dot{
-  position:absolute;width:12px;height:12px;border-radius:50%;z-index:5;
-  animation:dot-rgb 4s linear infinite;
+
+/* color accent line at top */
+.tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1.5px;
+  background: var(--ta, rgba(251,191,36,0.6));
+  box-shadow: 0 0 10px var(--tag, rgba(251,191,36,0.5)), 0 0 20px var(--tag, rgba(251,191,36,0.2));
+  opacity: 0.65;
+  transition: opacity 0.3s, left 0.3s, right 0.3s;
 }
-.led-dot.tl{top:-6px;left:-6px;}
-.led-dot.tr{top:-6px;right:-6px;animation-delay:-1s;}
-.led-dot.bl{bottom:-6px;left:-6px;animation-delay:-2s;}
-.led-dot.br{bottom:-6px;right:-6px;animation-delay:-3s;}
 
-/* card: only show LEDs on hover + always show for "soon" */
-.card .led-t,.card .led-b,.card .led-l,.card .led-r,.card .led-dot{opacity:0;transition:opacity .3s;}
-.card:hover .led-t,.card:hover .led-b,.card:hover .led-l,.card:hover .led-r,.card:hover .led-dot{opacity:1;}
-.card.soon .led-t,.card.soon .led-b,.card.soon .led-l,.card.soon .led-r,.card.soon .led-dot{opacity:.7;}
+/* glass sheen */
+.tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, rgba(255,255,255,0.045) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-/* ══ WELCOME ══ */
-#welcome{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(5,12,28,.99) 0%,#020408 100%);transition:opacity 1.8s ease,visibility 1.8s ease;}
-#welcome.hide{opacity:0;visibility:hidden;pointer-events:none;}
-.wlc-box{position:relative;text-align:center;padding:56px 68px;background:rgba(5,10,22,.9);border:1px solid rgba(255,215,0,.12);box-shadow:0 0 80px rgba(0,0,0,.9),inset 0 0 60px rgba(0,20,50,.5);}
-.wlc-bat{font-size:60px;display:block;margin-bottom:22px;filter:drop-shadow(0 0 22px rgba(0,255,255,.8));animation:float 3.5s ease-in-out infinite;}
-.wlc-logo{font-family:var(--f-black);font-size:clamp(34px,7vw,76px);letter-spacing:12px;margin-bottom:8px;background:var(--goldg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 20px rgba(255,215,0,.5));}
-.wlc-rule{width:100%;height:2px;margin:16px 0;background:linear-gradient(90deg,transparent,rgba(255,215,0,.6),transparent);}
-.wlc-sub{font-family:var(--f-mono);font-size:9px;color:rgba(0,255,255,.6);letter-spacing:7px;text-transform:uppercase;margin-bottom:44px;}
-.wlc-bar-wrap{width:100%;height:4px;background:rgba(255,255,255,.05);margin-bottom:16px;overflow:hidden;border-radius:2px;}
-.wlc-bar-fill{height:100%;width:0;animation:prog 3.4s ease forwards .5s;border-radius:2px;background:linear-gradient(90deg,#ff0000,#ff8800,#ffff00,#00ff88,#00ffff,#4488ff,#ff00ff);background-size:200% 100%;animation:prog 3.4s ease forwards .5s,rgb-h 3s linear infinite;}
-.wlc-status{font-family:var(--f-mono);font-size:9px;color:rgba(255,215,0,.7);letter-spacing:4px;}
-.wlc-cur::after{content:'▌';animation:blink .7s step-end infinite;}
+.tile:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    inset 0 -1px 0 rgba(0,0,0,0.35),
+    0 18px 44px rgba(0,0,0,0.65),
+    0 6px 16px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 0 28px var(--tag, rgba(251,191,36,0.1));
+}
+.tile:hover::before { opacity: 1; left: 8%; right: 8%; }
 
-/* ══ NOTIF BANNER ══ */
-#notif-banner{background:rgba(4,8,20,.98);padding:14px 36px;display:none;align-items:center;gap:18px;position:sticky;top:0;z-index:500;backdrop-filter:blur(20px);border-bottom:4px solid transparent;border-image:linear-gradient(90deg,#ff0000,#ffff00,#00ff88,#00ffff,#ff00ff,#ff0000) 1;}
-#notif-banner.show{display:flex;}
-.nb-icon{font-size:20px;}
-.nb-text{flex:1;}
-.nb-head{font-family:var(--f-disp);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;text-shadow:0 0 10px rgba(255,215,0,.5);}
-.nb-sub{font-family:var(--f-ui);font-size:14px;color:var(--dim);font-weight:600;}
-.nb-btn{font-family:var(--f-disp);font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:11px 26px;cursor:pointer;transition:all .25s;border:none;background:var(--goldg);color:#000;box-shadow:0 4px 20px rgba(255,215,0,.4);}
-.nb-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(255,215,0,.6);}
-.nb-close{background:none;border:none;color:var(--dim);font-size:16px;cursor:pointer;padding:4px 10px;transition:color .2s;}
-.nb-close:hover{color:var(--txt);}
+.tile-n {
+  font-family: var(--fo);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 7px;
+  animation: numrise 0.6s ease both;
+  color: rgba(253,230,138,0.90);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.85), 0 0 24px rgba(251,191,36,0.12);
+}
+.tile-n.g { color:rgba(167,243,208,0.90); text-shadow:0 2px 16px rgba(0,0,0,0.85), 0 0 24px rgba(52,211,153,0.15); }
+.tile-n.r { color:rgba(252,165,165,0.90); text-shadow:0 2px 16px rgba(0,0,0,0.85), 0 0 24px rgba(248,113,113,0.15); }
+.tile-n.b { color:rgba(165,243,252,0.90); text-shadow:0 2px 16px rgba(0,0,0,0.85), 0 0 24px rgba(34,211,238,0.18); }
+.tile-n.a { color:rgba(253,230,138,0.90); text-shadow:0 2px 16px rgba(0,0,0,0.85), 0 0 24px rgba(251,191,36,0.14); }
 
-/* ══ APP ══ */
-#app{max-width:1720px;margin:0 auto;padding:0 28px 100px;opacity:0;transition:opacity 1.2s ease;position:relative;z-index:1;}
-#app.on{opacity:1;}
-#welcome,#overlay,#toast-wrap,#toast-ripple,#return-banner,#q-badge{position:relative;z-index:1;}
+.tile-l {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3.5px;
+  color: rgba(148,163,184,0.45);
+  text-transform: uppercase;
+  font-weight: 400;
+}
 
-/* ══ HEADER ══ */
-.lhdr{text-align:center;padding:80px 0 60px;position:relative;}
-.lhdr-sup{font-family:var(--f-mono);font-size:10px;color:rgba(0,255,255,.5);letter-spacing:10px;text-transform:uppercase;margin-bottom:22px;}
-.lhdr-crown{font-size:44px;display:block;margin-bottom:18px;filter:drop-shadow(0 0 24px rgba(255,215,0,.8));animation:float 4s ease-in-out infinite;}
-.lhdr-brand{font-family:var(--f-black);font-size:clamp(52px,10vw,130px);letter-spacing:16px;line-height:1;background:var(--goldg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 6px 30px rgba(255,215,0,.45));margin-bottom:10px;}
-.lhdr-sub{font-family:var(--f-disp);font-size:clamp(10px,1.8vw,16px);font-weight:800;color:var(--cy);letter-spacing:6px;text-transform:uppercase;margin-bottom:10px;text-shadow:0 0 16px rgba(0,255,255,.55);}
-.lhdr-tag{font-family:var(--f-mono);font-size:9px;color:var(--dim);letter-spacing:3px;margin-bottom:36px;}
-.lhdr-rule{height:3px;background:linear-gradient(90deg,transparent,#ff0000,#ffff00,#00ff88,#00ffff,#4488ff,#ff00ff,transparent);background-size:200% 100%;animation:rgb-h 4s linear infinite;margin:0 12%;border-radius:2px;box-shadow:0 0 12px rgba(255,255,255,.2);}
+/* color tokens */
+.tile.tc-gold  { --ta: rgba(251,191,36,0.55);  --tag: rgba(251,191,36,0.2); }
+.tile.tc-green { --ta: rgba(52,211,153,0.55);  --tag: rgba(52,211,153,0.2); }
+.tile.tc-red   { --ta: rgba(248,113,113,0.55); --tag: rgba(248,113,113,0.2); }
+.tile.tc-cyan  { --ta: rgba(34,211,238,0.55);  --tag: rgba(34,211,238,0.2); }
+.tile.tc-amber { --ta: rgba(251,191,36,0.45);  --tag: rgba(251,191,36,0.16); }
 
-/* ══ PERSIST ══ */
-#persist-info{display:flex;align-items:center;gap:14px;padding:14px 28px;margin-bottom:28px;background:rgba(0,255,136,.025);border:2px solid rgba(0,255,136,.15);font-family:var(--f-mono);font-size:9px;color:rgba(0,255,136,.65);letter-spacing:3px;text-transform:uppercase;}
-#persist-info span{color:var(--dim);font-family:var(--f-ui);font-size:13px;letter-spacing:.5px;text-transform:none;font-weight:600;}
-#persist-info::before{content:'▸';color:#00ff88;font-size:14px;text-shadow:0 0 8px #00ff88;}
+/* ── Clock tile (same 3D base, wider) ── */
+.tile-clk {
+  position: relative;
+  padding: 20px 24px;
+  isolation: isolate;
+  display: flex; flex-direction: column; justify-content: center;
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), box-shadow 0.35s;
 
-/* ══ RGB BOX — base class for bordered panels ══ */
-.rgb-box{position:relative;overflow:visible;}
+  background:
+    linear-gradient(150deg,
+      rgba(255,255,255,0.055) 0%,
+      rgba(255,255,255,0.018) 45%,
+      rgba(0,0,0,0.12) 100%),
+    rgba(5, 11, 26, 0.84);
 
-/* ══ CLOCK PANEL ══ */
-.clock-panel{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:32px 0;}
-.clk-cell{padding:44px 48px;position:relative;overflow:visible;background:var(--card);backdrop-filter:blur(20px);border:1px solid rgba(255,215,0,.12);box-shadow:0 20px 60px rgba(0,0,0,.8),0 4px 0 rgba(255,215,0,.08),inset 0 1px 0 rgba(255,255,255,.04);}
-.clk-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 50%,rgba(0,0,0,.2) 100%);pointer-events:none;}
-.clk-label{font-family:var(--f-mono);font-size:10px;color:rgba(255,215,0,.6);letter-spacing:7px;text-transform:uppercase;margin-bottom:18px;text-shadow:0 0 8px rgba(255,215,0,.3);}
-.clk-time{font-family:var(--f-disp);font-size:clamp(40px,5.5vw,72px);font-weight:900;color:var(--txt);letter-spacing:5px;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 20px rgba(255,255,255,.1);}
-.clk-time.neon{color:var(--cy);text-shadow:0 0 20px rgba(0,255,255,.9),0 0 40px rgba(0,255,255,.5),0 0 80px rgba(0,255,255,.2),0 2px 4px rgba(0,0,0,.8);}
-.clk-info{font-family:var(--f-ui);font-size:15px;font-weight:700;color:var(--txt2);margin-top:16px;letter-spacing:2px;}
-.clk-info.neon{color:rgba(0,255,255,.8);text-shadow:0 0 10px rgba(0,255,255,.4);}
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top-color: rgba(255,255,255,0.11);
+  border-left-color: rgba(255,255,255,0.08);
 
-/* ══ STATUS STRIP ══ */
-.status-strip{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 32px;margin-bottom:32px;overflow:visible;background:var(--card);border:1px solid rgba(0,255,255,.1);box-shadow:0 12px 40px rgba(0,0,0,.7),0 3px 0 rgba(0,255,255,.06),inset 0 1px 0 rgba(255,255,255,.04);}
-.s-live{display:flex;align-items:center;gap:10px;}
-.s-dot{width:10px;height:10px;border-radius:50%;background:var(--grn);animation:live-pulse 2s ease-in-out infinite;}
-.s-live-txt{font-family:var(--f-disp);font-size:11px;font-weight:800;color:var(--grn);letter-spacing:5px;text-shadow:0 0 8px rgba(0,255,136,.6);}
-.s-div{color:rgba(255,255,255,.1);font-size:22px;font-weight:100;}
-.s-stat{font-family:var(--f-ui);font-size:14px;font-weight:700;color:var(--txt2);letter-spacing:1px;}
-.s-stat b.g{color:#69ffb4;text-shadow:0 0 8px rgba(105,255,180,.5);}
-.s-stat b.r{color:var(--red2);text-shadow:0 0 8px rgba(255,107,107,.5);}
-.s-stat b.a{color:var(--gold2);text-shadow:0 0 8px rgba(255,236,110,.5);}
-.s-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;}
-.s-btn{font-family:var(--f-disp);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 18px;background:rgba(0,255,255,.04);border:2px solid rgba(0,255,255,.2);color:rgba(0,255,255,.7);cursor:pointer;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05);}
-.s-btn:hover{background:rgba(0,255,255,.12);border-color:var(--cy);color:var(--cy);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,255,255,.25);}
-.s-btn:active{transform:translateY(0);}
-.s-btn.ok{border-color:rgba(0,255,136,.35);color:rgba(0,255,136,.8);}
-.s-btn.deny{border-color:rgba(255,34,68,.35);color:var(--red2);}
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.065),
+    inset 0 -1px 0 rgba(0,0,0,0.35),
+    0 6px 20px rgba(0,0,0,0.55),
+    0 2px 6px rgba(0,0,0,0.30),
+    0 0 0 1px rgba(0,0,0,0.25);
 
-/* ══ SECTION LABEL ══ */
-.section-label{font-family:var(--f-disp);font-size:12px;font-weight:900;color:var(--gold);letter-spacing:8px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:14px;text-shadow:0 0 14px rgba(255,215,0,.4);}
-.section-label::before,.section-label::after{content:'';flex:1;height:1px;}
-.section-label::before{background:linear-gradient(270deg,rgba(255,215,0,.4),transparent);}
-.section-label::after{background:linear-gradient(90deg,rgba(255,215,0,.4),transparent);}
+  backdrop-filter: blur(24px) saturate(1.5);
+}
+.tile-clk::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1.5px;
+  background: rgba(251,191,36,0.5);
+  box-shadow: 0 0 10px rgba(251,191,36,0.4), 0 0 20px rgba(251,191,36,0.15);
+  opacity: 0.6;
+  transition: opacity 0.3s, left 0.3s, right 0.3s;
+}
+.tile-clk::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(155deg, rgba(255,255,255,0.038) 0%, transparent 50%);
+  pointer-events: none;
+}
+.tile-clk:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 18px 44px rgba(0,0,0,0.65),
+    0 0 28px rgba(251,191,36,0.08);
+}
+.tile-clk:hover::before { opacity: 1; left: 8%; right: 8%; }
 
-/* ══ STATS ══ */
-.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:32px;}
-.stat{padding:30px 16px;text-align:center;position:relative;overflow:visible;background:var(--card);border:1px solid rgba(255,215,0,.1);box-shadow:0 12px 40px rgba(0,0,0,.6),0 3px 0 rgba(255,215,0,.07),inset 0 1px 0 rgba(255,255,255,.04);transition:all .3s;cursor:default;}
-.stat:hover{transform:translateY(-8px) scale(1.03);border-color:rgba(255,215,0,.35);box-shadow:0 24px 60px rgba(0,0,0,.8),0 6px 0 rgba(255,215,0,.14),0 0 30px rgba(255,215,0,.1);}
-.stat::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.05) 0%,transparent 40%,rgba(0,0,0,.15) 100%);pointer-events:none;}
-.stat-n{font-family:var(--f-black);font-size:54px;line-height:1;margin-bottom:8px;color:var(--gold2);text-shadow:0 4px 12px rgba(0,0,0,.6),0 0 20px rgba(255,215,0,.35);}
-.stat-n.g{color:#69ffb4;text-shadow:0 4px 12px rgba(0,0,0,.6),0 0 20px rgba(105,255,180,.4);}
-.stat-n.r{color:var(--red2);text-shadow:0 4px 12px rgba(0,0,0,.6),0 0 20px rgba(255,107,107,.4);}
-.stat-n.bl{color:#88bbff;text-shadow:0 4px 12px rgba(0,0,0,.6),0 0 20px rgba(136,187,255,.4);}
-.stat-l{font-family:var(--f-disp);font-size:9px;font-weight:800;color:var(--dim);letter-spacing:3px;text-transform:uppercase;}
+.clk-lbl { font-family:var(--fm); font-size:8px; color:rgba(251,191,36,0.40); letter-spacing:5px; text-transform:uppercase; margin-bottom:10px; font-weight:400; position:relative; z-index:1; }
+.clk-val { font-family:var(--fo); font-size:clamp(24px,2.4vw,34px); font-weight:900; letter-spacing:2px; line-height:1; color:rgba(240,249,255,0.90); text-shadow:0 2px 10px rgba(0,0,0,0.9), 0 0 20px rgba(255,255,255,0.05); position:relative; z-index:1; }
+.clk-val.cy { color:var(--cyan); text-shadow:0 0 14px rgba(34,211,238,0.65), 0 0 28px rgba(34,211,238,0.2), 0 2px 8px rgba(0,0,0,0.9); }
+.clk-inf { font-family:var(--fr); font-size:12px; font-weight:600; color:rgba(148,163,184,0.45); margin-top:8px; letter-spacing:1px; position:relative; z-index:1; }
+.clk-inf.cy { color:rgba(34,211,238,0.55); }
 
-/* ══ FILTER ══ */
-.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
-.filter-btn{font-family:var(--f-disp);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:11px 22px;background:rgba(255,255,255,.02);border:2px solid rgba(255,255,255,.08);color:var(--dim);cursor:pointer;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
-.filter-btn:hover{background:rgba(255,215,0,.06);border-color:rgba(255,215,0,.35);color:var(--gold2);transform:translateY(-2px);}
-.filter-btn.on{background:rgba(255,215,0,.08);border-color:rgba(255,215,0,.55);color:var(--gold2);box-shadow:0 4px 16px rgba(255,215,0,.15);}
-.search-box{margin-left:auto;background:rgba(5,10,22,.95);border:2px solid rgba(0,255,255,.15);color:var(--txt);padding:12px 24px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;outline:none;width:270px;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.4),inset 0 2px 6px rgba(0,0,0,.3);}
-.search-box:focus{border-color:rgba(0,255,255,.55);box-shadow:0 4px 20px rgba(0,255,255,.15),inset 0 2px 6px rgba(0,0,0,.3);}
-.search-box::placeholder{color:var(--dim);}
+/* CTRL BAR */
+.ctrl-bar { display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:10px 16px; background:var(--glass); border:1px solid var(--border2); backdrop-filter:blur(14px); margin-bottom:12px; position:relative; overflow:visible; }
+.ctrl-lbl { font-family:var(--fo); font-size:9px; font-weight:700; color:rgba(251,191,36,0.5); letter-spacing:4px; margin-right:4px; white-space:nowrap; }
+.f-btn { font-family:var(--fo); font-size:8px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:8px 16px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.10); color:var(--muted); cursor:pointer; transition:all .2s; }
+.f-btn:hover { background:rgba(251,191,36,0.07); border-color:rgba(251,191,36,0.35); color:var(--gold2); }
+.f-btn.on { background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.50); color:var(--gold2); box-shadow:0 0 10px rgba(251,191,36,0.12); }
+.srch { margin-left:auto; background:rgba(4,8,20,0.80); border:1px solid rgba(34,211,238,0.18); color:var(--txt); padding:8px 18px; font-family:var(--fm); font-size:10px; letter-spacing:1.5px; outline:none; width:240px; transition:all .2s; backdrop-filter:blur(8px); }
+.srch:focus { border-color:rgba(34,211,238,0.50); box-shadow:0 0 14px rgba(34,211,238,0.12); }
+.srch::placeholder { color:var(--muted); }
 
-/* ══ GRID ══ */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(305px,1fr));gap:5px;}
+.sec-h { display:flex; align-items:center; gap:12px; margin-bottom:10px; font-family:var(--fo); font-size:10px; font-weight:700; color:rgba(251,191,36,0.60); letter-spacing:5px; text-transform:uppercase; }
+.sec-h::before, .sec-h::after { content:''; flex:1; height:1px; }
+.sec-h::before { background:linear-gradient(270deg,rgba(251,191,36,0.35),transparent); }
+.sec-h::after  { background:linear-gradient( 90deg,rgba(251,191,36,0.35),transparent); }
 
-/* ══ CARD ══ */
-.card{position:relative;overflow:visible;padding:28px 26px 26px;background:var(--card);border:1px solid rgba(255,215,0,.12);transition:all .4s cubic-bezier(0.23,1,0.32,1);box-shadow:0 8px 32px rgba(0,0,0,.7),0 2px 0 rgba(255,215,0,.06),inset 0 1px 0 rgba(255,255,255,.04);}
-.card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 40%,rgba(0,0,0,.15) 100%);pointer-events:none;z-index:0;}
-.card>*:not(.led-t):not(.led-b):not(.led-l):not(.led-r):not(.led-dot){position:relative;z-index:1;}
-.card:hover{background:var(--card2);transform:translateY(-8px) rotateX(2deg);box-shadow:0 28px 70px rgba(0,0,0,.9),0 8px 0 rgba(255,215,0,.1),0 0 30px rgba(255,215,0,.08),inset 0 1px 0 rgba(255,255,255,.06);border-color:rgba(255,215,0,.35);}
-.card.closed{background:rgba(12,4,6,.97);border-color:rgba(255,34,68,.18);}
-.card.closed:hover{border-color:rgba(255,34,68,.45);box-shadow:0 28px 70px rgba(0,0,0,.9),0 8px 0 rgba(255,34,68,.1),0 0 30px rgba(255,34,68,.08);}
-.card.soon{border-color:rgba(0,255,255,.2);animation:card-soon 2.5s ease-in-out infinite;}
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:8px; }
 
-/* smaller LED on cards */
-.card .led-t,.card .led-b{left:10px;right:10px;height:3px;}
-.card .led-l,.card .led-r{top:10px;bottom:10px;width:3px;}
-.card .led-dot{width:10px;height:10px;}
-.card .led-dot.tl{top:-5px;left:-5px;}
-.card .led-dot.tr{top:-5px;right:-5px;}
-.card .led-dot.bl{bottom:-5px;left:-5px;}
-.card .led-dot.br{bottom:-5px;right:-5px;}
+/* CARDS */
+.card { position:relative; overflow:visible; background:var(--glass); border:1px solid var(--border); backdrop-filter:blur(14px); padding:20px 20px 18px; transition:transform .35s cubic-bezier(.23,1,.32,1), box-shadow .35s, border-color .25s; box-shadow:0 4px 20px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.05); }
+.card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 45%,rgba(0,0,0,0.08) 100%); pointer-events:none; z-index:0; }
+.card > *:not(.led-strip):not(.led-dot) { position:relative; z-index:1; }
+.card:hover { transform:translateY(-6px); border-color:rgba(251,191,36,0.40); box-shadow:0 16px 40px rgba(0,0,0,0.70), 0 0 20px rgba(251,191,36,0.07), inset 0 1px 0 rgba(255,255,255,0.07); }
+.card.closed { background:rgba(20,4,8,0.72); border-color:rgba(248,113,113,0.15); }
+.card.closed:hover { border-color:rgba(248,113,113,0.40); box-shadow:0 16px 40px rgba(0,0,0,0.70),0 0 20px rgba(248,113,113,0.07); }
+.card.soon { animation:soon-gl 2.5s ease-in-out infinite; border-color:rgba(34,211,238,0.22); }
+.card .led-strip, .card .led-dot { opacity:0; transition:opacity .3s; }
+.card:hover .led-strip, .card:hover .led-dot { opacity:1; }
+.card.soon .led-strip, .card.soon .led-dot { opacity:0.7; }
+.c-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:6px; }
+.c-name { font-family:var(--fb); font-size:16px; letter-spacing:1.5px; color:var(--txt); cursor:pointer; flex:1; line-height:1.25; transition:color .2s; text-shadow:0 2px 8px rgba(0,0,0,0.80); position:relative; }
+.c-name:hover { color:var(--gold2); text-shadow:0 0 12px rgba(251,191,36,0.5),0 2px 8px rgba(0,0,0,0.8); }
+.c-name .ctip { position:absolute; bottom:calc(100%+6px); left:0; background:rgba(1,2,10,0.97); border:1px solid rgba(251,191,36,0.45); color:var(--gold2); font-family:var(--fm); font-size:8px; letter-spacing:2px; padding:5px 10px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .15s; z-index:20; }
+.c-name:hover .ctip { opacity:1; }
+.card.closed .c-name { color:rgba(252,165,165,0.85); }
+.card.soon  .c-name { color:var(--cyan); text-shadow:0 0 12px rgba(34,211,238,0.5); }
+.badge { font-family:var(--fo); font-size:8px; font-weight:700; letter-spacing:1.5px; padding:5px 10px; flex-shrink:0; white-space:nowrap; border:1px solid; box-shadow:0 2px 6px rgba(0,0,0,0.4); }
+.b-open   { color:var(--green2); border-color:rgba(52,211,153,0.45); background:rgba(52,211,153,0.07); }
+.b-closed { color:var(--red2);   border-color:rgba(248,113,113,0.45); background:rgba(248,113,113,0.07); }
+.b-soon   { color:var(--cyan);   border-color:rgba(34,211,238,0.55); background:rgba(34,211,238,0.07); animation:badge-bl 1s ease-in-out infinite; text-shadow:0 0 8px rgba(34,211,238,0.6); }
+.c-day { font-family:var(--fm); font-size:11px; font-weight:600; color:rgba(186,230,253,0.80); letter-spacing:1.5px; margin-bottom:14px; text-shadow:0 1px 6px rgba(0,0,0,0.9); }
+.c-div { height:1px; margin-bottom:14px; }
+.card      .c-div { background:linear-gradient(90deg,rgba(251,191,36,0.55),rgba(251,191,36,0.15),transparent); }
+.card.closed .c-div { background:linear-gradient(90deg,rgba(248,113,113,0.55),rgba(248,113,113,0.15),transparent); }
+.card.soon   .c-div { background:linear-gradient(90deg,rgba(34,211,238,0.55),rgba(34,211,238,0.15),transparent); }
+.c-libur { display:flex; align-items:center; gap:6px; margin-bottom:12px; background:rgba(248,113,113,0.06); border:1px solid rgba(248,113,113,0.28); padding:7px 12px; font-family:var(--fo); font-size:8px; font-weight:700; color:rgba(252,165,165,0.90); letter-spacing:2px; }
+.c-times { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.ct { padding:14px 14px; background:rgba(0,0,0,0.45); border:1px solid; border-top-width:2px; position:relative; overflow:hidden; }
+.ct::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,var(--tc-accent,rgba(255,255,255,0.3)),transparent); }
+.ct.tc  { border-color:rgba(248,113,113,0.25); border-top-color:rgba(248,113,113,0.75); --tc-accent:rgba(248,113,113,0.6); }
+.ct.to  { border-color:rgba(34,211,238,0.22);  border-top-color:rgba(34,211,238,0.75);  --tc-accent:rgba(34,211,238,0.6); }
+.ct-lbl { font-family:var(--fo); font-size:8px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+.ct.tc .ct-lbl { color:rgba(252,165,165,0.65); }
+.ct.to .ct-lbl { color:rgba(34,211,238,0.60); }
+.ct-val { font-family:var(--fo); font-size:28px; font-weight:900; line-height:1; letter-spacing:1px; }
+.ct.tc .ct-val { color:rgba(255,200,200,0.95); text-shadow:0 0 12px rgba(248,113,113,0.4),0 2px 4px rgba(0,0,0,0.8); }
+.ct.to .ct-val { color:var(--cyan2); text-shadow:0 0 12px rgba(34,211,238,0.6),0 2px 4px rgba(0,0,0,0.8); }
+.ct-wib { font-family:var(--fm); font-size:8px; color:rgba(255,255,255,0.30); display:block; margin-top:4px; letter-spacing:1.5px; }
+.c-cd { margin-top:10px; font-family:var(--fo); font-size:9px; font-weight:700; color:rgba(251,191,36,0.75); display:flex; align-items:center; gap:6px; letter-spacing:1.5px; text-shadow:0 0 8px rgba(251,191,36,0.3); }
+.c-cd::before { content:'◆'; font-size:7px; }
+.c-hoki { display:flex; align-items:center; gap:12px; padding:14px 14px; background:rgba(251,191,36,0.04); border:1px solid rgba(251,191,36,0.18); }
+.hoki-dot { width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; animation:dot-c 4s linear infinite; }
+.hoki-txt { font-family:var(--fo); font-size:8px; font-weight:700; color:rgba(251,191,36,0.75); letter-spacing:2px; }
+.c-fired { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:6px 12px; background:rgba(52,211,153,0.05); border:1px solid rgba(52,211,153,0.20); font-family:var(--fo); font-size:8px; color:rgba(167,243,208,0.75); letter-spacing:2px; }
 
-/* ── card content ── */
-.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:5px;}
-.card-name{font-family:var(--f-black);font-size:16px;letter-spacing:1.5px;color:var(--txt);flex:1;cursor:pointer;position:relative;transition:color .25s;text-shadow:0 2px 6px rgba(0,0,0,.6);line-height:1.3;}
-.card-name:hover{color:var(--gold2);text-shadow:0 0 14px rgba(255,215,0,.5),0 2px 6px rgba(0,0,0,.6);}
-.card-name .copy-tip{position:absolute;bottom:calc(100% + 8px);left:0;background:rgba(2,4,12,.98);border:2px solid rgba(255,215,0,.5);color:var(--gold2);font-family:var(--f-mono);font-size:7px;letter-spacing:3px;padding:5px 12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.8);}
-.card-name:hover .copy-tip{opacity:1;}
-.card.closed .card-name{color:rgba(255,180,180,.85);}
-.card.soon .card-name{color:var(--cy);text-shadow:0 0 14px rgba(0,255,255,.5);}
+.copy-flash { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(1,2,10,0.97); border:1px solid rgba(251,191,36,0.60); color:var(--gold2); font-family:var(--fo); font-size:12px; font-weight:700; letter-spacing:3px; padding:14px 32px; pointer-events:none; z-index:99999; animation:t-in .15s ease, t-out .25s ease 1s forwards; box-shadow:0 0 30px rgba(251,191,36,0.25), 0 0 60px rgba(0,0,0,0.9); }
 
-.badge{font-family:var(--f-disp);font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;white-space:nowrap;flex-shrink:0;border:2px solid;box-shadow:0 2px 8px rgba(0,0,0,.5);}
-.badge-open{background:rgba(0,255,136,.08);color:#69ffb4;border-color:rgba(0,255,136,.5);text-shadow:0 0 6px rgba(0,255,136,.5);}
-.badge-closed{background:rgba(255,34,68,.08);color:var(--red2);border-color:rgba(255,34,68,.5);}
-.badge-soon{background:rgba(0,255,255,.08);color:var(--cy);border-color:rgba(0,255,255,.55);animation:badge-blink 1s ease-in-out infinite;text-shadow:0 0 6px rgba(0,255,255,.6);}
+#pi { display:flex; align-items:center; gap:10px; padding:10px 16px; margin-bottom:12px; background:rgba(52,211,153,0.04); border:1px solid rgba(52,211,153,0.14); font-family:var(--fm); font-size:9px; color:rgba(52,211,153,0.65); letter-spacing:2px; }
+#pi::before { content:'▸'; color:var(--green); font-size:12px; }
+#pi span { color:var(--muted); font-family:var(--fr); font-size:12px; letter-spacing:.3px; }
 
-.card-day{font-family:var(--f-mono);font-size:8px;color:var(--dim);letter-spacing:1.5px;margin-bottom:18px;}
-.card-libur{display:flex;align-items:center;gap:6px;background:rgba(255,34,68,.06);border:2px solid rgba(255,34,68,.3);padding:8px 14px;margin-bottom:14px;font-family:var(--f-disp);font-size:9px;font-weight:700;color:rgba(255,180,180,.9);letter-spacing:2px;text-transform:uppercase;}
-.card-divider{height:2px;margin:0 0 18px;border-radius:1px;}
-.card .card-divider{background:linear-gradient(90deg,var(--gold),rgba(255,215,0,.3),transparent);box-shadow:0 0 6px rgba(255,215,0,.3);}
-.card.closed .card-divider{background:linear-gradient(90deg,var(--red),rgba(255,34,68,.3),transparent);box-shadow:0 0 6px rgba(255,34,68,.3);}
-.card.soon .card-divider{background:linear-gradient(90deg,var(--cy),rgba(0,255,255,.3),transparent);box-shadow:0 0 6px rgba(0,255,255,.3);}
+#overlay { position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.96); backdrop-filter:blur(24px) saturate(0.1); display:none; align-items:center; justify-content:center; }
+#overlay.on { display:flex; }
+.modal { width:92%; max-width:500px; position:relative; overflow:visible; animation:modal-in .4s cubic-bezier(.22,1,.36,1); }
+.modal-inner { background:rgba(12,4,8,0.99); border:1px solid rgba(248,113,113,0.30); overflow:hidden; box-shadow:0 60px 120px rgba(0,0,0,0.99),0 0 40px rgba(248,113,113,0.10); }
+.modal-bar { height:3px; background:linear-gradient(90deg,#ff0000,#ff8c00,#ffe000,#ff0000); background-size:200% 100%; animation:rgb-h 2s linear infinite; }
+.modal-head { padding:24px 30px 18px; border-bottom:1px solid rgba(255,255,255,0.04); display:flex; justify-content:space-between; align-items:center; }
+.mh-tag   { font-family:var(--fm); font-size:8px; color:rgba(248,113,113,0.6); letter-spacing:4px; margin-bottom:6px; }
+.mh-title { font-family:var(--fb); font-size:28px; color:var(--red2); letter-spacing:4px; text-shadow:0 0 14px rgba(248,113,113,0.5); }
+.mh-clk   { font-family:var(--fo); font-size:20px; font-weight:900; color:var(--cyan); text-shadow:0 0 14px rgba(34,211,238,0.7); }
+.modal-body { padding:32px 30px; text-align:center; }
+.m-name  { font-family:var(--fb); font-size:clamp(16px,3.5vw,24px); letter-spacing:2px; margin-bottom:16px; animation:badge-bl 1.4s ease-in-out infinite alternate; color:var(--gold2); text-shadow:0 0 16px rgba(251,191,36,0.5); }
+.m-alert { font-family:var(--fb); font-size:64px; letter-spacing:8px; color:var(--red2); text-shadow:0 0 24px rgba(248,113,113,0.8); animation:badge-bl 1s ease-in-out infinite; }
+.m-sub   { font-family:var(--fm); font-size:8px; color:var(--muted); letter-spacing:3px; margin:12px 0 24px; }
+.m-times { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+.m-tc { padding:18px 18px; background:rgba(0,0,0,0.5); border:1px solid rgba(248,113,113,0.18); border-top:2px solid rgba(248,113,113,0.7); }
+.m-tc-l { font-family:var(--fo); font-size:8px; color:rgba(252,165,165,0.55); letter-spacing:3px; margin-bottom:8px; }
+.m-tc-v { font-family:var(--fo); font-size:28px; font-weight:900; color:var(--cyan); text-shadow:0 0 14px rgba(34,211,238,0.6); }
+.m-btn { width:100%; padding:18px 24px; background:rgba(248,113,113,0.06); border:2px solid rgba(248,113,113,0.40); color:var(--red2); font-family:var(--fb); font-size:14px; letter-spacing:5px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:12px; transition:all .25s; position:relative; overflow:hidden; text-shadow:0 0 8px rgba(248,113,113,0.5); }
+.m-btn:hover { background:rgba(248,113,113,0.15); border-color:rgba(248,113,113,0.65); transform:translateY(-2px); }
+.m-pulse { position:absolute; inset:-1px; border:1px solid rgba(248,113,113,0.50); animation:mpulse 1.6s ease-out infinite; }
 
-.card-times{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.ct{padding:16px 15px;position:relative;background:rgba(0,0,0,.5);border:2px solid;border-top-width:3px;box-shadow:inset 0 2px 8px rgba(0,0,0,.4),0 2px 4px rgba(0,0,0,.3);}
-.ct::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.03) 0%,transparent 50%);pointer-events:none;}
-.ct-close{border-color:rgba(255,34,68,.25);border-top-color:rgba(255,34,68,.8);}
-.ct-open{border-color:rgba(0,255,255,.2);border-top-color:rgba(0,255,255,.8);}
-.ct-lbl{font-family:var(--f-disp);font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
-.ct-close .ct-lbl{color:rgba(255,100,100,.6);}
-.ct-open .ct-lbl{color:rgba(0,255,255,.5);}
-.ct-val{font-family:var(--f-disp);font-size:24px;font-weight:900;line-height:1;}
-.ct-close .ct-val{color:rgba(255,180,180,.9);text-shadow:0 0 8px rgba(255,34,68,.3);}
-.ct-open .ct-val{color:var(--cy);text-shadow:0 0 10px rgba(0,255,255,.5);}
-.ct-wib{font-family:var(--f-mono);font-size:7px;color:var(--dim);display:block;margin-top:3px;}
+#toast-wrap { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:8500; display:flex; flex-direction:column; align-items:center; gap:6px; pointer-events:none; width:min(95vw,520px); }
+.toast { width:100%; background:rgba(5,10,22,0.98); border:1px solid rgba(251,191,36,0.22); position:relative; overflow:hidden; pointer-events:all; animation:t-in .45s cubic-bezier(.22,1,.36,1) forwards; backdrop-filter:blur(20px); box-shadow:0 40px 80px rgba(0,0,0,0.95),0 0 30px rgba(251,191,36,0.08); }
+.toast.out { animation:t-out .3s ease forwards; }
+.toast-bar { height:3px; background:linear-gradient(90deg,#ff0000,#ff8c00,#ffe000,#00ff55,#00eeff,#cc00ff,#ff0000); background-size:200% 100%; animation:rgb-h 3s linear infinite; }
+.toast-body { padding:18px 20px 14px; display:flex; align-items:center; gap:14px; }
+.toast-ico { width:48px; height:48px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:22px; border:1px solid rgba(248,113,113,0.30); background:rgba(248,113,113,0.06); }
+.toast-ico.h { border-color:rgba(251,191,36,0.35); background:rgba(251,191,36,0.05); }
+.toast-inf { flex:1; min-width:0; }
+.toast-tag { font-family:var(--fm); font-size:7px; color:rgba(248,113,113,0.65); letter-spacing:3px; margin-bottom:4px; }
+.toast-tag.h { color:rgba(251,191,36,0.65); }
+.toast-name { font-family:var(--fb); font-size:16px; letter-spacing:1.5px; color:var(--txt); margin-bottom:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.toast-times { display:flex; align-items:center; gap:12px; }
+.t-tl { font-family:var(--fm); font-size:7px; color:var(--muted); letter-spacing:1.5px; }
+.t-tv { font-family:var(--fo); font-size:16px; font-weight:700; color:var(--cyan); text-shadow:0 0 8px rgba(34,211,238,0.5); }
+.toast-x { position:absolute; top:10px; right:10px; width:24px; height:24px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:var(--muted); font-size:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+.toast-x:hover { border-color:rgba(248,113,113,0.45); color:var(--red); }
+.toast-prog { height:2px; background:rgba(255,255,255,0.04); }
+.toast-pb { height:100%; background:linear-gradient(90deg,#ff0000,#ffe000,#00ff55,#00eeff,#cc00ff); background-size:200% 100%; animation:pb var(--dur,9s) linear forwards,rgb-h 3s linear infinite; }
 
-.card-cd{margin-top:14px;font-family:var(--f-disp);font-size:10px;font-weight:700;color:rgba(255,215,0,.7);display:flex;align-items:center;gap:8px;text-shadow:0 0 8px rgba(255,215,0,.3);}
-.card-cd::before{content:'◆';font-size:8px;color:var(--gold);}
+#rb { position:fixed; top:0; left:0; right:0; z-index:8800; background:rgba(10,2,4,0.98); display:none; box-shadow:0 6px 30px rgba(0,0,0,0.9); }
+#rb.show { display:block; animation:rbin .4s cubic-bezier(.22,1,.36,1); }
+.rb-top { height:3px; background:linear-gradient(90deg,#ff0000,#ff8c00,#ff0000); background-size:200% 100%; animation:rgb-h 2s linear infinite; }
+.rb-in { display:flex; align-items:center; gap:16px; padding:14px 24px; }
+.rb-dot { width:10px; height:10px; border-radius:50%; background:var(--red); flex-shrink:0; animation:badge-bl .9s ease-in-out infinite; }
+.rb-txt { flex:1; }
+.rb-h  { font-family:var(--fo); font-size:9px; color:var(--red); letter-spacing:3px; margin-bottom:3px; }
+.rb-ns { font-family:var(--fb); font-size:14px; color:var(--txt); }
+.rb-acts { display:flex; gap:8px; }
+.rb-btn { font-family:var(--fo); font-size:8px; letter-spacing:2px; padding:9px 16px; border:1px solid; cursor:pointer; background:none; transition:all .2s; }
+.rb-stop { border-color:rgba(248,113,113,0.45); color:var(--red); }
+.rb-stop:hover { background:rgba(248,113,113,0.12); }
+.rb-cls { border-color:rgba(255,255,255,0.10); color:var(--muted); }
+.rb-cls:hover { border-color:rgba(255,255,255,0.22); color:var(--txt); }
+#qbadge { position:fixed; top:18px; right:18px; z-index:200; background:rgba(4,8,20,0.97); border:1px solid rgba(251,191,36,0.45); padding:8px 18px; font-family:var(--fo); font-size:9px; font-weight:700; color:var(--gold2); letter-spacing:3px; display:none; }
 
-.hoki-row{display:flex;align-items:center;gap:14px;padding:16px 18px;margin-top:4px;background:rgba(255,215,0,.03);border:2px solid rgba(255,215,0,.18);}
-.hoki-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:dot-rgb 4s linear infinite;}
-.hoki-txt{font-family:var(--f-disp);font-size:9px;font-weight:800;color:rgba(255,215,0,.7);letter-spacing:3px;text-transform:uppercase;}
+.footer { text-align:center; padding:48px 0 32px; margin-top:48px; position:relative; }
+.footer::before { content:''; position:absolute; top:0; left:8%; right:8%; height:2px; border-radius:1px; background:linear-gradient(90deg,#ff0000,#ff8c00,#ffe000,#00ff55,#00eeff,#cc00ff,#ff0000); background-size:200% 100%; animation:rgb-h 4s linear infinite; }
+.footer-icon { font-size:32px; display:block; margin-bottom:14px; filter:drop-shadow(0 0 14px rgba(251,191,36,0.6)); animation:float 4s ease-in-out infinite; }
+.footer-name { font-family:var(--fb); font-size:28px; letter-spacing:12px; margin-bottom:10px; background:var(--goldg); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.footer-copy { font-family:var(--fm); font-size:9px; color:var(--muted); letter-spacing:4px; }
 
-.alarm-fired-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:rgba(0,255,136,.04);border:2px solid rgba(0,255,136,.2);color:rgba(105,255,180,.7);padding:7px 14px;font-family:var(--f-disp);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+@media(max-width:1100px) { .dash-row { grid-template-columns:repeat(3,1fr) 1fr 1fr; } }
+@media(max-width:700px)  { .dash-row { grid-template-columns:repeat(3,1fr); } .tile-clk { grid-column:span 1; } }
+@media(max-width:640px)  { .dash-row { grid-template-columns:1fr 1fr 1fr; } .grid { grid-template-columns:1fr 1fr; } .srch { width:100%; margin-left:0; } .topbar { flex-wrap:wrap; } }
+@media(max-width:420px)  { .dash-row { grid-template-columns:1fr 1fr; } .grid { grid-template-columns:1fr; } }
 
-/* ══ COPY FLASH ══ */
-.copy-flash{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(2,4,12,.98);border:3px solid;border-image:linear-gradient(90deg,#ff0000,#ffff00,#00ff88,#00ffff,#ff00ff,#ff0000) 1;color:var(--gold2);font-family:var(--f-disp);font-size:13px;font-weight:900;letter-spacing:4px;padding:18px 40px;pointer-events:none;z-index:99999;animation:cfin .18s ease,cfout .3s ease 1.1s forwards;text-shadow:0 0 14px rgba(255,215,0,.6);box-shadow:0 0 40px rgba(255,215,0,.3),0 0 80px rgba(0,0,0,.9);}
-
-/* ══ OVERLAY ══ */
-#overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.97);backdrop-filter:blur(28px) saturate(.1);display:none;align-items:center;justify-content:center;}
-#overlay.on{display:flex;}
-.modal{width:92%;max-width:520px;position:relative;overflow:visible;animation:modal-in .45s cubic-bezier(0.22,1,0.36,1);}
-/* bigger LED strips on modal */
-.modal .led-t,.modal .led-b{height:5px;box-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(255,255,255,.15);}
-.modal .led-l,.modal .led-r{width:5px;box-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(255,255,255,.15);}
-.modal .led-dot{width:14px;height:14px;}
-.modal .led-dot.tl{top:-7px;left:-7px;}
-.modal .led-dot.tr{top:-7px;right:-7px;}
-.modal .led-dot.bl{bottom:-7px;left:-7px;}
-.modal .led-dot.br{bottom:-7px;right:-7px;}
-.modal-inner{background:rgba(8,4,8,.99);border:1px solid rgba(255,34,68,.35);overflow:hidden;box-shadow:0 80px 160px rgba(0,0,0,.99),0 0 60px rgba(255,34,68,.15),inset 0 1px 0 rgba(255,255,255,.04);}
-.modal-top-bar{height:5px;background:linear-gradient(90deg,#ff0000,#ff6600,#ffff00,#ff0000);background-size:200% 100%;animation:rgb-h 2s linear infinite;box-shadow:0 0 16px rgba(255,34,68,.8);}
-.modal-head{padding:28px 36px 22px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;}
-.mh-tag{font-family:var(--f-mono);font-size:9px;color:rgba(255,34,68,.6);letter-spacing:5px;text-transform:uppercase;margin-bottom:8px;}
-.mh-title{font-family:var(--f-black);font-size:32px;color:var(--red2);letter-spacing:5px;text-shadow:0 0 16px rgba(255,34,68,.6);}
-.mh-clock{font-family:var(--f-disp);font-size:22px;font-weight:900;color:var(--cy);text-shadow:0 0 16px rgba(0,255,255,.7);}
-.modal-body{padding:38px 36px;text-align:center;}
-.m-name{font-family:var(--f-black);font-size:clamp(18px,4vw,28px);color:var(--txt);letter-spacing:3px;margin-bottom:20px;animation:npulse 1.4s ease-in-out infinite alternate;}
-.m-alert{font-family:var(--f-black);font-size:80px;letter-spacing:10px;color:var(--red2);text-shadow:0 0 30px rgba(255,34,68,.8),0 0 60px rgba(255,34,68,.4);animation:mblink 1s ease-in-out infinite;}
-.m-sub{font-family:var(--f-mono);font-size:9px;color:var(--dim);letter-spacing:4px;margin:14px 0 30px;}
-.m-times{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px;}
-.m-tc{padding:20px 22px;background:rgba(0,0,0,.5);border:2px solid rgba(255,34,68,.2);position:relative;overflow:hidden;}
-.m-tc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,34,68,.8),transparent);}
-.m-tc-lbl{font-family:var(--f-disp);font-size:9px;font-weight:800;color:rgba(255,100,100,.55);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
-.m-tc-val{font-family:var(--f-disp);font-size:32px;font-weight:900;color:var(--cy);text-shadow:0 0 16px rgba(0,255,255,.6);}
-.m-btn{width:100%;padding:22px 28px;background:rgba(255,34,68,.06);border:3px solid rgba(255,34,68,.45);color:var(--red2);font-family:var(--f-black);font-size:16px;letter-spacing:6px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:14px;transition:all .25s;position:relative;overflow:hidden;text-shadow:0 0 10px rgba(255,34,68,.5);box-shadow:0 4px 20px rgba(255,34,68,.15),inset 0 1px 0 rgba(255,255,255,.04);}
-.m-btn:hover{background:rgba(255,34,68,.18);border-color:rgba(255,34,68,.7);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,34,68,.3);}
-.m-pulse{position:absolute;inset:-1px;border:2px solid rgba(255,34,68,.55);animation:mpulse 1.6s ease-out infinite;}
-
-/* ══ TOAST ══ */
-#toast-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8500;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;width:min(95vw,560px);}
-.toast{width:100%;background:rgba(5,10,22,.99);position:relative;overflow:hidden;pointer-events:all;animation:tin .5s cubic-bezier(0.22,1,0.36,1) forwards;backdrop-filter:blur(24px);border:2px solid rgba(255,215,0,.25);box-shadow:0 50px 120px rgba(0,0,0,.99),0 0 40px rgba(255,215,0,.1);}
-.toast.out{animation:tout .35s cubic-bezier(0.55,0,1,0.45) forwards;}
-.toast-top{height:4px;background:linear-gradient(90deg,#ff0000,#ff8800,#ffff00,#00ff88,#00ffff,#4488ff,#ff00ff,#ff0000);background-size:200% 100%;animation:rgb-h 3s linear infinite;}
-.toast-body{padding:22px 26px 18px;display:flex;align-items:center;gap:18px;}
-.toast-icon{width:56px;height:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(255,34,68,.07);border:2px solid rgba(255,34,68,.3);animation:live-pulse 1.3s ease-in-out infinite;}
-.toast-icon.hoki{background:rgba(255,215,0,.06);border-color:rgba(255,215,0,.35);}
-.toast-info{flex:1;min-width:0;}
-.toast-tag{font-family:var(--f-mono);font-size:8px;color:rgba(255,34,68,.65);letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
-.toast-tag::before{content:'// ';color:var(--dim);}
-.toast-tag.h{color:rgba(255,215,0,.65);}
-.toast-title{font-family:var(--f-black);font-size:18px;letter-spacing:2px;color:var(--txt);margin-bottom:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.toast-times{display:flex;align-items:center;gap:14px;}
-.toast-ti-l{font-family:var(--f-mono);font-size:7px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;}
-.toast-ti-v{font-family:var(--f-disp);font-size:18px;font-weight:900;color:var(--cy);text-shadow:0 0 8px rgba(0,255,255,.5);}
-.toast-x{position:absolute;top:12px;right:12px;width:28px;height:28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:var(--dim);font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.toast-x:hover{border-color:rgba(255,34,68,.5);color:var(--red2);}
-.toast-prog{height:3px;background:rgba(255,255,255,.04);}
-.toast-prog-bar{height:100%;background:linear-gradient(90deg,#ff0000,#ffff00,#00ff88,#00ffff,#ff00ff);background-size:200% 100%;animation:pb var(--dur,9s) linear forwards,rgb-h 3s linear infinite;}
-
-/* ══ RETURN BANNER ══ */
-#return-banner{position:fixed;top:0;left:0;right:0;z-index:8800;background:rgba(10,2,4,.99);display:none;box-shadow:0 8px 40px rgba(0,0,0,.95);}
-#return-banner.show{display:block;animation:rbin .45s cubic-bezier(0.22,1,0.36,1);}
-.rb-top{height:4px;background:linear-gradient(90deg,#ff0000,#ff6600,#ff0000);background-size:200% 100%;animation:rgb-h 2s linear infinite;}
-.rb-inner{display:flex;align-items:center;gap:20px;padding:18px 32px;}
-.rb-pulse{width:12px;height:12px;border-radius:50%;background:var(--red2);flex-shrink:0;animation:rbp .9s ease-in-out infinite;}
-.rb-text{flex:1;}
-.rb-title{font-family:var(--f-disp);font-size:10px;font-weight:900;color:var(--red2);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;}
-.rb-names{font-family:var(--f-black);font-size:16px;color:var(--txt);letter-spacing:1px;}
-.rb-actions{display:flex;gap:10px;flex-shrink:0;}
-.rb-btn{font-family:var(--f-disp);font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:11px 20px;border:2px solid;cursor:pointer;transition:all .2s;background:none;}
-.rb-btn-stop{border-color:rgba(255,34,68,.45);color:var(--red2);}
-.rb-btn-stop:hover{background:rgba(255,34,68,.15);}
-.rb-btn-close{border-color:rgba(255,255,255,.1);color:var(--dim);}
-.rb-btn-close:hover{border-color:rgba(255,255,255,.25);color:var(--txt);}
-
-#q-badge{position:fixed;top:22px;right:22px;z-index:200;background:rgba(4,8,20,.98);border:2px solid rgba(255,215,0,.5);padding:10px 22px;font-family:var(--f-disp);font-size:10px;font-weight:800;color:var(--gold2);letter-spacing:4px;display:none;box-shadow:0 4px 20px rgba(255,215,0,.2);}
-
-#toast-ripple{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:8490;width:580px;height:250px;display:none;}
-#toast-ripple span{position:absolute;inset:0;border:1px solid rgba(255,215,0,.08);animation:ripple 3.2s ease-out infinite;}
-#toast-ripple span:nth-child(2){animation-delay:.65s;border-color:rgba(255,34,68,.06);}
-#toast-ripple span:nth-child(3){animation-delay:1.3s;}
-
-/* ══ FOOTER ══ */
-.footer{text-align:center;padding:72px 0 40px;margin-top:72px;position:relative;}
-.footer::before{content:'';position:absolute;top:0;left:5%;right:5%;height:4px;background:linear-gradient(90deg,#ff0000,#ff8800,#ffff00,#00ff88,#00ffff,#4488ff,#ff00ff,#ff0000);background-size:200% 100%;animation:rgb-h 4s linear infinite;border-radius:2px;box-shadow:0 0 14px rgba(255,255,255,.2);}
-.footer-bat{font-size:40px;display:block;margin-bottom:20px;filter:drop-shadow(0 0 16px rgba(255,215,0,.6));animation:float 4.5s ease-in-out infinite;}
-.footer-name{font-family:var(--f-black);font-size:36px;letter-spacing:16px;background:var(--goldg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;filter:drop-shadow(0 4px 20px rgba(255,215,0,.35));}
-.footer-copy{font-family:var(--f-mono);font-size:9px;color:var(--dim);letter-spacing:5px;text-transform:uppercase;}
-
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ff0000,#ffff00,#00ff88,#00ffff,#ff00ff);}
-
-@media(max-width:768px){.clock-panel{grid-template-columns:1fr;}.stats-row{grid-template-columns:repeat(3,1fr);}.search-box{width:100%;margin-left:0;}}
-@media(max-width:640px){.grid{grid-template-columns:1fr 1fr;}.s-actions{margin-left:0;width:100%;}#toast-wrap{width:95vw;}}
-@media(max-width:400px){.grid{grid-template-columns:1fr;}}
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#ff0000,#ffe000,#00ff55,#00eeff,#cc00ff); }
 </style>
 </head>
 <body>
-<div class="bg-wrap">
-  <div class="bg-img"></div><div class="bg-grad"></div>
-  <div class="bg-grid"></div><div class="bg-scan"></div>
+
+<div class="bg">
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+  <div class="bg-grid"></div>
 </div>
 
-<!-- WELCOME -->
 <div id="welcome">
-  <div class="wlc-box rgb-box">
-    <div class="led-t"></div><div class="led-b"></div>
-    <div class="led-l"></div><div class="led-r"></div>
-    <div class="led-dot tl"></div><div class="led-dot tr"></div>
-    <div class="led-dot bl"></div><div class="led-dot br"></div>
-    <span class="wlc-bat">🦇</span>
-    <div class="wlc-logo">TOGEL LUBIS</div>
-    <div class="wlc-rule"></div>
-    <div class="wlc-sub">[ Alarm System · Bet Close Monitor ]</div>
-    <div class="wlc-bar-wrap"><div class="wlc-bar-fill"></div></div>
-    <div class="wlc-status wlc-cur" id="wlcStatus">INITIALIZING SYSTEM...</div>
+  <div class="wbox">
+    <div class="led-strip led-h lt" style="left:16px;right:16px;"></div>
+    <div class="led-strip led-h lb" style="left:16px;right:16px;"></div>
+    <div class="led-strip led-v ll" style="top:16px;bottom:16px;"></div>
+    <div class="led-strip led-v lr" style="top:16px;bottom:16px;"></div>
+    <div class="led-dot dtl"></div><div class="led-dot dtr"></div>
+    <div class="led-dot dbl"></div><div class="led-dot dbr"></div>
+    <span class="wbox-bat">🦇</span>
+    <div class="wbox-title">TOGEL LUBIS</div>
+    <div class="wbox-rule"></div>
+    <div class="wbox-sub">[ ALARM SYSTEM · BET CLOSE MONITOR ]</div>
+    <div class="wbox-bar"><div class="wbox-fill"></div></div>
+    <div class="wbox-stat" id="wStat">INITIALIZING...</div>
   </div>
 </div>
 
-<!-- MODAL -->
 <div id="overlay">
-  <div class="modal rgb-box">
-    <div class="led-t"></div><div class="led-b"></div>
-    <div class="led-l"></div><div class="led-r"></div>
-    <div class="led-dot tl"></div><div class="led-dot tr"></div>
-    <div class="led-dot bl"></div><div class="led-dot br"></div>
+  <div class="modal">
+    <div class="led-strip led-h lt" style="left:14px;right:14px;height:4px;"></div>
+    <div class="led-strip led-h lb" style="left:14px;right:14px;height:4px;"></div>
+    <div class="led-strip led-v ll" style="top:14px;bottom:14px;width:4px;"></div>
+    <div class="led-strip led-v lr" style="top:14px;bottom:14px;width:4px;"></div>
+    <div class="led-dot dtl" style="width:12px;height:12px;top:-6px;left:-6px;"></div>
+    <div class="led-dot dtr" style="width:12px;height:12px;top:-6px;right:-6px;"></div>
+    <div class="led-dot dbl" style="width:12px;height:12px;bottom:-6px;left:-6px;"></div>
+    <div class="led-dot dbr" style="width:12px;height:12px;bottom:-6px;right:-6px;"></div>
     <div class="modal-inner">
-      <div class="modal-top-bar"></div>
+      <div class="modal-bar"></div>
       <div class="modal-head">
         <div><div class="mh-tag">◆ ALARM BET CLOSE</div><div class="mh-title">PASARAN TUTUP</div></div>
-        <div class="mh-clock" id="aTime">--:--:--</div>
+        <div class="mh-clk" id="aTime">--:--:--</div>
       </div>
       <div class="modal-body">
         <div class="m-name" id="aMkt">---</div>
         <div class="m-alert">TUTUP</div>
         <div class="m-sub">— SESI TARUHAN TELAH BERAKHIR —</div>
         <div class="m-times">
-          <div class="m-tc"><div class="m-tc-lbl">BET CLOSE</div><div class="m-tc-val" id="aTutup">--:--</div></div>
-          <div class="m-tc"><div class="m-tc-lbl">BUKA KEMBALI</div><div class="m-tc-val" id="aBuka">--:--</div></div>
+          <div class="m-tc"><div class="m-tc-l">BET CLOSE</div><div class="m-tc-v" id="aTutup">--:--</div></div>
+          <div class="m-tc"><div class="m-tc-l">BUKA KEMBALI</div><div class="m-tc-v" id="aBuka">--:--</div></div>
         </div>
         <button class="m-btn" onclick="dismissAlarm()"><div class="m-pulse"></div>🔕 MATIKAN ALARM</button>
       </div>
@@ -407,179 +483,177 @@ body{background:var(--bg);color:var(--txt);font-family:var(--f-ui);font-weight:7
 </div>
 
 <div id="toast-wrap"></div>
-<div id="toast-ripple"><span></span><span></span><span></span></div>
 
-<div id="return-banner">
+<div id="rb">
   <div class="rb-top"></div>
-  <div class="rb-inner">
-    <div class="rb-pulse"></div>
-    <div class="rb-text"><div class="rb-title">🔔 BET CLOSE — ALARM MASIH BERBUNYI</div><div class="rb-names" id="rb-names">—</div></div>
-    <div class="rb-actions">
-      <button class="rb-btn rb-btn-stop" onclick="dismissAlarm()">🔕 MATIKAN</button>
-      <button class="rb-btn rb-btn-close" onclick="closeReturnBanner()">✕ TUTUP</button>
+  <div class="rb-in">
+    <div class="rb-dot"></div>
+    <div class="rb-txt">
+      <div class="rb-h">🔔 BET CLOSE — ALARM MASIH BERBUNYI</div>
+      <div class="rb-ns" id="rb-names">—</div>
+    </div>
+    <div class="rb-acts">
+      <button class="rb-btn rb-stop" onclick="dismissAlarm()">🔕 MATIKAN</button>
+      <button class="rb-btn rb-cls" onclick="closeRB()">✕</button>
     </div>
   </div>
 </div>
 
-<div id="q-badge">ANTRIAN: <span id="qnum">0</span> ALARM</div>
+<div id="qbadge">ANTRIAN: <span id="qnum">0</span></div>
 
-<!-- APP -->
 <div id="app">
+
   <div id="notif-banner">
-    <div class="nb-icon">🔔</div>
-    <div class="nb-text">
-      <div class="nb-head">IZINKAN NOTIFIKASI BROWSER</div>
-      <div class="nb-sub">Agar alarm muncul walau tab tidak aktif / browser di-minimize</div>
+    <div class="nb-txt">
+      <div class="nb-h">IZINKAN NOTIFIKASI BROWSER</div>
+      <div class="nb-s">Agar alarm muncul walau tab tidak aktif / browser di-minimize</div>
     </div>
-    <button class="nb-btn" onclick="requestNotif()">✓ IZINKAN SEKARANG</button>
-    <button class="nb-close" onclick="closeNotifBanner()">✕</button>
+    <button class="nb-ok" onclick="reqNotif()">✓ IZINKAN</button>
+    <button class="nb-x" onclick="closeNB()">✕</button>
   </div>
 
-  <div class="lhdr">
-    <div class="lhdr-sup">◆ SISTEM MONITORING REAL-TIME ◆</div>
-    <span class="lhdr-crown">👑</span>
-    <div class="lhdr-brand">TOGEL LUBIS</div>
-    <div class="lhdr-sub">ALARM BET CLOSE · PASARAN TOGEL ANGKABET167</div>
-    <div class="lhdr-tag">// Sistem pemantau jadwal pasaran togel secara real-time //</div>
-    <div class="lhdr-rule"></div>
-  </div>
-
-  <div id="persist-info">DATA TERSIMPAN &nbsp;<span id="persist-detail">Memuat...</span></div>
-
-  <!-- CLOCK -->
-  <div class="clock-panel">
-    <div class="clk-cell rgb-box">
-      <div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div>
-      <div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div>
-      <div class="clk-label">⏱ WAKTU WIB SEKARANG</div>
-      <div class="clk-time" id="clkM">00:00:00</div>
-      <div class="clk-info" id="clkD">---</div>
-    </div>
-    <div class="clk-cell rgb-box">
-      <div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div>
-      <div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div>
-      <div class="clk-label">⚡ NEXT BET CLOSE</div>
-      <div class="clk-time neon" id="clkN">--:--:--</div>
-      <div class="clk-info neon" id="clkNI">MENGHITUNG...</div>
+  <div class="topbar">
+    <div class="led-strip led-h lt"></div><div class="led-strip led-h lb"></div>
+    <div class="led-strip led-v ll"></div><div class="led-strip led-v lr"></div>
+    <div class="led-dot dtl"></div><div class="led-dot dtr"></div>
+    <div class="led-dot dbl"></div><div class="led-dot dbr"></div>
+    <span style="font-size:20px;filter:drop-shadow(0 0 10px rgba(34,211,238,0.8))">🦇</span>
+    <div class="topbar-logo">TOGEL LUBIS</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-sub">ALARM BET CLOSE · ANGKABET167</div>
+    <div class="topbar-live"><div class="topbar-dot"></div><span class="topbar-live-txt">LIVE</span></div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-time" id="clkM">--:--:--</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-btns">
+      <button class="tb-btn" id="notifBtn" onclick="reqNotif()">🔔 NOTIF</button>
+      <button class="tb-btn" onclick="testSuara(false)">🔔 TEST</button>
+      <button class="tb-btn" onclick="testSuara(true)">◆ HOKI</button>
+      <button class="tb-btn" onclick="testToast()">⚡ TOAST</button>
     </div>
   </div>
 
-  <!-- STATUS -->
-  <div class="status-strip rgb-box">
-    <div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div>
-    <div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div>
-    <div class="s-live"><div class="s-dot"></div><span class="s-live-txt">LIVE</span></div>
-    <span class="s-div">|</span>
-    <span class="s-stat">BUKA <b class="g" id="sO">0</b></span>
-    <span class="s-div">|</span>
-    <span class="s-stat">TUTUP <b class="r" id="sC">0</b></span>
-    <span class="s-div">|</span>
-    <span class="s-stat">ALARM HARI INI <b class="a" id="sA">0</b></span>
-    <div class="s-actions">
-      <button class="s-btn" id="notifBtn" onclick="requestNotif()">🔔 NOTIFIKASI</button>
-      <button class="s-btn" onclick="testSuara(false)">🔔 TEST ALARM</button>
-      <button class="s-btn" onclick="testSuara(true)">◆ TEST HOKI</button>
-      <button class="s-btn" onclick="testToast()">⚡ TEST TOAST</button>
+  <div id="pi">DATA HARI INI&nbsp;<span id="piD">Memuat...</span></div>
+
+  <!-- DASHBOARD ROW — 5 elegant tiles + 2 clock -->
+  <div class="dash-row">
+
+    <div class="tile tc-gold">
+      <div class="tile-n" id="stT">0</div>
+      <div class="tile-l">Total</div>
     </div>
+
+    <div class="tile tc-green">
+      <div class="tile-n g" id="stO">0</div>
+      <div class="tile-l">Buka</div>
+    </div>
+
+    <div class="tile tc-red">
+      <div class="tile-n r" id="stC">0</div>
+      <div class="tile-l">Tutup</div>
+    </div>
+
+    <div class="tile tc-cyan">
+      <div class="tile-n b" id="stS">0</div>
+      <div class="tile-l">Segera</div>
+    </div>
+
+    <div class="tile tc-amber">
+      <div class="tile-n a" id="sA">0</div>
+      <div class="tile-l">Alarm</div>
+    </div>
+
+    <div class="tile-clk">
+      <div class="clk-lbl">⏱ WAKTU WIB</div>
+      <div class="clk-val" id="clkBig">00:00:00</div>
+      <div class="clk-inf" id="clkD">---</div>
+    </div>
+
+    <div class="tile-clk">
+      <div class="clk-lbl">⚡ NEXT BET CLOSE</div>
+      <div class="clk-val cy" id="clkN">--:--:--</div>
+      <div class="clk-inf cy" id="clkNI">MENGHITUNG...</div>
+    </div>
+
   </div>
 
-  <!-- STATS -->
-  <div class="section-label">STATISTIK PASARAN</div>
-  <div class="stats-row">
-    <div class="stat rgb-box"><div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="stat-n" id="stT">0</div><div class="stat-l">TOTAL PASARAN</div></div>
-    <div class="stat rgb-box"><div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="stat-n g" id="stO">0</div><div class="stat-l">SEDANG BUKA</div></div>
-    <div class="stat rgb-box"><div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="stat-n r" id="stC">0</div><div class="stat-l">SEDANG TUTUP</div></div>
-    <div class="stat rgb-box"><div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="stat-n bl" id="stS">0</div><div class="stat-l">SEGERA TUTUP</div></div>
-    <div class="stat rgb-box"><div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="stat-n" id="stA">0</div><div class="stat-l">ALARM HARI INI</div></div>
+  <div class="ctrl-bar">
+    <div class="led-strip led-h lt"></div><div class="led-strip led-h lb"></div>
+    <div class="led-strip led-v ll"></div><div class="led-strip led-v lr"></div>
+    <div class="led-dot dtl"></div><div class="led-dot dtr"></div><div class="led-dot dbl"></div><div class="led-dot dbr"></div>
+    <span class="ctrl-lbl">FILTER</span>
+    <button class="f-btn on" onclick="setFilter('all',this)">SEMUA</button>
+    <button class="f-btn"    onclick="setFilter('open',this)">✅ BUKA</button>
+    <button class="f-btn"    onclick="setFilter('closed',this)">🔴 TUTUP</button>
+    <button class="f-btn"    onclick="setFilter('soon',this)">⚡ SEGERA</button>
+    <button class="f-btn"    onclick="setFilter('holiday',this)">🚫 LIBUR</button>
+    <input class="srch" id="srch" placeholder="Cari pasaran..." oninput="renderCards()">
   </div>
 
-  <!-- FILTER -->
-  <div class="section-label">FILTER PASARAN</div>
-  <div class="filter-bar">
-    <button class="filter-btn on" onclick="setFilter('all',this)">🌐 SEMUA</button>
-    <button class="filter-btn" onclick="setFilter('open',this)">✅ BUKA</button>
-    <button class="filter-btn" onclick="setFilter('closed',this)">🔴 TUTUP</button>
-    <button class="filter-btn" onclick="setFilter('soon',this)">⚡ SEGERA</button>
-    <button class="filter-btn" onclick="setFilter('holiday',this)">🚫 LIBUR HARI INI</button>
-    <input class="search-box" id="srch" placeholder="🔍 cari nama pasaran..." oninput="renderCards()">
-  </div>
-
-  <div class="section-label">DAFTAR PASARAN</div>
+  <div class="sec-h">DAFTAR PASARAN · <span id="sO" style="color:var(--green2)">0</span> BUKA · <span id="sC" style="color:var(--red2)">0</span> TUTUP</div>
   <div class="grid" id="grid"></div>
 
   <div class="footer">
-    <span class="footer-bat">🦇</span>
+    <span class="footer-icon">🦇</span>
     <div class="footer-name">TOGEL LUBIS</div>
-    <div class="footer-copy">© 2025 · Alarm Jadwal Bet Close · All Rights Reserved · ANGKABET167</div>
+    <div class="footer-copy">© 2025 · ALARM JADWAL BET CLOSE · ALL RIGHTS RESERVED · ANGKABET167</div>
   </div>
+
 </div>
 
 <script>
 const DATA=[
-  {n:"HOKIDRAW 5D",         d:"Senin – Minggu",                              t:null,   b:null,   hoki:true,offDays:[],libur:""},
-  {n:"TOTOMACAU PAGI",      d:"Senin – Minggu",                              t:"00:00",b:"00:15",offDays:[],libur:""},
-  {n:"KENTUCKY MIDDAY",     d:"Senin – Minggu",                              t:"00:05",b:"00:20",offDays:[],libur:""},
-  {n:"FLORIDA MIDDAY",      d:"Senin – Minggu",                              t:"00:20",b:"00:30",offDays:[],libur:""},
-  {n:"HUAHIN 0100",         d:"Senin – Minggu",                              t:"00:45",b:"01:00",offDays:[],libur:""},
-  {n:"BANGKOK 0130",        d:"Senin – Minggu",                              t:"01:15",b:"01:30",offDays:[],libur:""},
-  {n:"NEWYORK MIDDAY",      d:"Senin – Minggu",                              t:"01:15",b:"01:25",offDays:[],libur:""},
-  {n:"CAROLINA DAY",        d:"Senin – Minggu",                              t:"01:45",b:"02:00",offDays:[],libur:""},
-  {n:"BRUNEI 02",           d:"Senin – Minggu",                              t:"02:30",b:"02:45",offDays:[],libur:""},
-  {n:"OREGON 03",           d:"Senin – Minggu",                              t:"02:50",b:"03:00",offDays:[],libur:""},
-  {n:"OREGON 06",           d:"Senin – Minggu",                              t:"05:50",b:"06:00",offDays:[],libur:""},
-  {n:"CALIFORNIA",          d:"Senin – Minggu",                              t:"08:25",b:"08:30",offDays:[],libur:""},
-  {n:"FLORIDA EVENING",     d:"Senin – Minggu",                              t:"08:35",b:"08:45",offDays:[],libur:""},
-  {n:"OREGON 09",           d:"Senin – Minggu",                              t:"08:50",b:"09:00",offDays:[],libur:""},
-  {n:"BANGKOK 0930",        d:"Senin – Minggu",                              t:"09:15",b:"09:30",offDays:[],libur:""},
-  {n:"NEWYORK EVENING",     d:"Senin – Minggu",                              t:"09:25",b:"09:35",offDays:[],libur:""},
-  {n:"KENTUCKY EVENING",    d:"Senin – Minggu",                              t:"09:45",b:"10:00",offDays:[],libur:""},
-  {n:"TOTO CAMBODIA",       d:"Senin – Minggu",                              t:"10:45",b:"11:00",offDays:[],libur:""},
-  {n:"CHELSEA 11",          d:"Senin – Minggu",                              t:"11:00",b:"11:15",offDays:[],libur:""},
-  {n:"CAROLINA EVENING",    d:"Senin – Minggu",                              t:"11:17",b:"11:22",offDays:[],libur:""},
-  {n:"OREGON 12",           d:"Senin – Minggu",                              t:"11:50",b:"12:00",offDays:[],libur:""},
-  {n:"BULLSEYE",            d:"Senin – Minggu",                              t:"12:00",b:"12:15",offDays:[],libur:""},
-  {n:"POIPET 12",           d:"Senin – Minggu",                              t:"12:15",b:"12:30",offDays:[],libur:""},
-  {n:"TOTOMACAU SIANG",     d:"Senin – Minggu",                              t:"13:00",b:"13:15",offDays:[],libur:""},
-  {n:"SYDNEY LOTTO",        d:"Senin – Minggu",                              t:"13:49",b:"14:05",offDays:[],libur:""},
-  {n:"BRUNEI 14",           d:"Senin – Minggu",                              t:"14:30",b:"14:45",offDays:[],libur:""},
-  {n:"CHELSEA 15",          d:"Senin – Minggu",                              t:"15:00",b:"15:15",offDays:[],libur:""},
-  {n:"POIPET 15",           d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[],libur:""},
-  {n:"TOTOMALI 1530",       d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[],libur:""},
-  {n:"TOTOMACAU SORE",      d:"Senin – Minggu",                              t:"16:00",b:"16:15",offDays:[],libur:""},
-  {n:"HUAHIN 1630",         d:"Senin – Minggu",                              t:"16:15",b:"16:30",offDays:[],libur:""},
-  {n:"KINGKONG 4D SORE",    d:"Senin – Minggu",                              t:"17:00",b:"17:15",offDays:[],libur:""},
-  {n:"SINGAPORE",           d:"Sen,Rab,Kam,Sab,Min · Libur Sel & Jum",      t:"17:30",b:"17:45",offDays:[2,5],libur:"Selasa & Jumat"},
-  {n:"MAGNUM4D",            d:"Rab,Sab & Min · Libur Sen,Sel,Kam & Jum",    t:"18:10",b:"18:40",offDays:[1,2,4,5],libur:"Senin, Selasa, Kamis & Jumat"},
-  {n:"TOTOMACAU MALAM I",   d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[],libur:""},
-  {n:"CHELSEA 19",          d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[],libur:""},
-  {n:"POIPET 19",           d:"Senin – Minggu",                              t:"19:30",b:"19:45",offDays:[],libur:""},
-  {n:"PCSO",                d:"Senin – Sabtu · Libur Minggu",               t:"19:50",b:"20:10",offDays:[0],libur:"Minggu"},
-  {n:"TOTOMALI 2030",       d:"Senin – Minggu",                              t:"20:15",b:"20:30",offDays:[],libur:""},
-  {n:"HUAHIN 2100",         d:"Senin – Minggu",                              t:"20:45",b:"21:00",offDays:[],libur:""},
-  {n:"CHELSEA 21",          d:"Senin – Minggu",                              t:"21:00",b:"21:15",offDays:[],libur:""},
-  {n:"NEVADA",              d:"Senin – Minggu",                              t:"21:15",b:"21:30",offDays:[],libur:""},
-  {n:"BRUNEI 21",           d:"Senin – Minggu",                              t:"21:30",b:"21:45",offDays:[],libur:""},
-  {n:"TOTOMACAU MALAM II",  d:"Senin – Minggu",                              t:"22:00",b:"22:15",offDays:[],libur:""},
-  {n:"POIPET 22",           d:"Senin – Minggu",                              t:"22:30",b:"22:45",offDays:[],libur:""},
-  {n:"HONGKONG LOTTO",      d:"Senin – Minggu",                              t:"22:59",b:"23:15",offDays:[],libur:""},
-  {n:"TOTOMACAU MALAM III", d:"Senin – Minggu",                              t:"23:00",b:"23:15",offDays:[],libur:""},
-  {n:"TOTOMALI 2330",       d:"Senin – Minggu",                              t:"23:15",b:"23:30",offDays:[],libur:""},
-  {n:"KINGKONG 4D MALAM",   d:"Senin – Minggu",                              t:"23:30",b:"23:45",offDays:[],libur:""},
+  {n:"HOKIDRAW 5D",        d:"Senin – Minggu",                              t:null,   b:null,   hoki:true, offDays:[], libur:""},
+  {n:"TOTOMACAU PAGI",     d:"Senin – Minggu",                              t:"00:00",b:"00:15",offDays:[], libur:""},
+  {n:"KENTUCKY MIDDAY",    d:"Senin – Minggu",                              t:"00:05",b:"00:20",offDays:[], libur:""},
+  {n:"FLORIDA MIDDAY",     d:"Senin – Minggu",                              t:"00:20",b:"00:30",offDays:[], libur:""},
+  {n:"HUAHIN 0100",        d:"Senin – Minggu",                              t:"00:45",b:"01:00",offDays:[], libur:""},
+  {n:"BANGKOK 0130",       d:"Senin – Minggu",                              t:"01:15",b:"01:30",offDays:[], libur:""},
+  {n:"NEWYORK MIDDAY",     d:"Senin – Minggu",                              t:"01:15",b:"01:25",offDays:[], libur:""},
+  {n:"CAROLINA DAY",       d:"Senin – Minggu",                              t:"01:45",b:"02:00",offDays:[], libur:""},
+  {n:"BRUNEI 02",          d:"Senin – Minggu",                              t:"02:30",b:"02:45",offDays:[], libur:""},
+  {n:"OREGON 03",          d:"Senin – Minggu",                              t:"02:50",b:"03:00",offDays:[], libur:""},
+  {n:"OREGON 06",          d:"Senin – Minggu",                              t:"05:50",b:"06:00",offDays:[], libur:""},
+  {n:"CALIFORNIA",         d:"Senin – Minggu",                              t:"08:25",b:"08:30",offDays:[], libur:""},
+  {n:"FLORIDA EVENING",    d:"Senin – Minggu",                              t:"08:35",b:"08:45",offDays:[], libur:""},
+  {n:"OREGON 09",          d:"Senin – Minggu",                              t:"08:50",b:"09:00",offDays:[], libur:""},
+  {n:"BANGKOK 0930",       d:"Senin – Minggu",                              t:"09:15",b:"09:30",offDays:[], libur:""},
+  {n:"NEWYORK EVENING",    d:"Senin – Minggu",                              t:"09:25",b:"09:35",offDays:[], libur:""},
+  {n:"KENTUCKY EVENING",   d:"Senin – Minggu",                              t:"09:45",b:"10:00",offDays:[], libur:""},
+  {n:"TOTO CAMBODIA",      d:"Senin – Minggu",                              t:"10:45",b:"11:00",offDays:[], libur:""},
+  {n:"CHELSEA 11",         d:"Senin – Minggu",                              t:"11:00",b:"11:15",offDays:[], libur:""},
+  {n:"CAROLINA EVENING",   d:"Senin – Minggu",                              t:"11:17",b:"11:22",offDays:[], libur:""},
+  {n:"OREGON 12",          d:"Senin – Minggu",                              t:"11:50",b:"12:00",offDays:[], libur:""},
+  {n:"BULLSEYE",           d:"Senin – Minggu",                              t:"12:00",b:"12:15",offDays:[], libur:""},
+  {n:"POIPET 12",          d:"Senin – Minggu",                              t:"12:15",b:"12:30",offDays:[], libur:""},
+  {n:"TOTOMACAU SIANG",    d:"Senin – Minggu",                              t:"13:00",b:"13:15",offDays:[], libur:""},
+  {n:"SYDNEY LOTTO",       d:"Senin – Minggu",                              t:"13:49",b:"14:05",offDays:[], libur:""},
+  {n:"BRUNEI 14",          d:"Senin – Minggu",                              t:"14:30",b:"14:45",offDays:[], libur:""},
+  {n:"CHELSEA 15",         d:"Senin – Minggu",                              t:"15:00",b:"15:15",offDays:[], libur:""},
+  {n:"POIPET 15",          d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:""},
+  {n:"TOTOMALI 1530",      d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:""},
+  {n:"TOTOMACAU SORE",     d:"Senin – Minggu",                              t:"16:00",b:"16:15",offDays:[], libur:""},
+  {n:"HUAHIN 1630",        d:"Senin – Minggu",                              t:"16:15",b:"16:30",offDays:[], libur:""},
+  {n:"KINGKONG 4D SORE",   d:"Senin – Minggu",                              t:"17:00",b:"17:15",offDays:[], libur:""},
+  {n:"SINGAPORE",          d:"Sen,Rab,Kam,Sab,Min · Libur Sel & Jum",      t:"17:30",b:"17:45",offDays:[2,5],  libur:"Selasa & Jumat"},
+  {n:"MAGNUM4D",           d:"Rab,Sab & Min · Libur Sen,Sel,Kam & Jum",    t:"18:10",b:"18:40",offDays:[1,2,4,5],libur:"Senin, Selasa, Kamis & Jumat"},
+  {n:"TOTOMACAU MALAM I",  d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:""},
+  {n:"CHELSEA 19",         d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:""},
+  {n:"POIPET 19",          d:"Senin – Minggu",                              t:"19:30",b:"19:45",offDays:[], libur:""},
+  {n:"PCSO",               d:"Senin – Sabtu · Libur Minggu",               t:"19:50",b:"20:10",offDays:[0],   libur:"Minggu"},
+  {n:"TOTOMALI 2030",      d:"Senin – Minggu",                              t:"20:15",b:"20:30",offDays:[], libur:""},
+  {n:"HUAHIN 2100",        d:"Senin – Minggu",                              t:"20:45",b:"21:00",offDays:[], libur:""},
+  {n:"CHELSEA 21",         d:"Senin – Minggu",                              t:"21:00",b:"21:15",offDays:[], libur:""},
+  {n:"NEVADA",             d:"Senin – Minggu",                              t:"21:15",b:"21:30",offDays:[], libur:""},
+  {n:"BRUNEI 21",          d:"Senin – Minggu",                              t:"21:30",b:"21:45",offDays:[], libur:""},
+  {n:"TOTOMACAU MALAM II", d:"Senin – Minggu",                              t:"22:00",b:"22:15",offDays:[], libur:""},
+  {n:"POIPET 22",          d:"Senin – Minggu",                              t:"22:30",b:"22:45",offDays:[], libur:""},
+  {n:"HONGKONG LOTTO",     d:"Senin – Minggu",                              t:"22:59",b:"23:15",offDays:[], libur:""},
+  {n:"TOTOMACAU MALAM III",d:"Senin – Minggu",                              t:"23:00",b:"23:15",offDays:[], libur:""},
+  {n:"TOTOMALI 2330",      d:"Senin – Minggu",                              t:"23:15",b:"23:30",offDays:[], libur:""},
+  {n:"KINGKONG 4D MALAM",  d:"Senin – Minggu",                              t:"23:30",b:"23:45",offDays:[], libur:""},
 ];
-function copyName(name){const showFlash=()=>{const el=document.createElement('div');el.className='copy-flash';el.textContent='✓ DISALIN: '+name;document.body.appendChild(el);setTimeout(()=>el.remove(),1600);};if(navigator.clipboard){navigator.clipboard.writeText(name).then(showFlash).catch(()=>{fallbackCopy(name);showFlash();});}else{fallbackCopy(name);showFlash();}}
-function fallbackCopy(t){const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
-const LS='tgl_';
-function todayKey(){const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-function lsGet(k){try{return JSON.parse(localStorage.getItem(LS+k));}catch(e){return null;}}
-function lsSet(k,v){try{localStorage.setItem(LS+k,JSON.stringify(v));}catch(e){}}
-function cleanOld(){const t=todayKey();try{Object.keys(localStorage).forEach(k=>{if(!k.startsWith(LS))return;const i=k.replace(LS,'');if(i.includes('-')&&!i.includes(t))localStorage.removeItem(k);});}catch(e){}}
-function loadFired(){const d=lsGet('fired_'+todayKey());return new Set(Array.isArray(d)?d:[]);}
-function saveFired(s){lsSet('fired_'+todayKey(),[...s]);}
-function loadCnt(){return lsGet('cnt_'+todayKey())||0;}
-function saveCnt(n){lsSet('cnt_'+todayKey(),n);}
-let fired=loadFired(),alarmCnt=loadCnt();
-cleanOld();updatePI();
-function updatePI(){const el=document.getElementById('persist-detail');if(!el)return;el.textContent=`${fired.size} alarm tercatat hari ini (${todayKey()}) — Tidak hilang saat F5 · Reset otomatis besok`;}
+
 const pad=n=>String(n).padStart(2,'0');
 const toM=s=>{const[h,m]=s.split(':').map(Number);return h*60+m;};
 const nowM=()=>{const d=new Date();return d.getHours()*60+d.getMinutes();};
@@ -587,40 +661,141 @@ const nowS=()=>{const d=new Date();return d.getHours()*3600+d.getMinutes()*60+d.
 const fmtCd=s=>{if(s<0)s+=86400;return`${pad(~~(s/3600))}:${pad(~~(s%3600/60))}:${pad(s%60)}`;};
 const DAYS=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MON=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
-function isHol(p){if(!p.offDays||!p.offDays.length)return false;return p.offDays.includes(new Date().getDay());}
-function getStatus(p){if(p.hoki)return'open';if(isHol(p))return'closed';const nm=nowM(),tm=toM(p.t),bm=toM(p.b),diff=tm-nm;if(diff>15)return'open';if(diff>0)return'soon';if(nm-bm>=0&&nm-bm<120)return'open';return'closed';}
-function cdTxt(p){if(p.hoki||!p.t)return'';if(isHol(p))return`LIBUR — ${p.libur}`;const d=toM(p.t)-nowM();if(d>0&&d<=60)return`⚡ TUTUP DALAM ${d} MENIT`;if(d<=0&&d>-30)return`⏱ TUTUP ${Math.abs(d)} MENIT LALU`;return'';}
-(function(){const msgs=['INITIALIZING SYSTEM...','CONNECTING SERVER...','LOADING SAVED DATA...','SYSTEM READY ◆'];let i=0;const el=document.getElementById('wlcStatus');const iv=setInterval(()=>{i++;if(i<msgs.length)el.textContent=msgs[i];else clearInterval(iv);},900);setTimeout(()=>{document.getElementById('welcome').classList.add('hide');document.getElementById('app').classList.add('on');checkNotif();document.getElementById('sA').textContent=alarmCnt;document.getElementById('stA').textContent=alarmCnt;},4000);})();
+function isHol(p){return p.offDays&&p.offDays.includes(new Date().getDay());}
+function getStatus(p){
+  if(p.hoki)return'open';
+  if(isHol(p))return'closed';
+  const nm=nowM(),tm=toM(p.t),bm=toM(p.b),diff=tm-nm;
+  if(diff>15)return'open';
+  if(diff>0)return'soon';
+  if(nm-bm>=0&&nm-bm<120)return'open';
+  return'closed';
+}
+function cdTxt(p){
+  if(p.hoki||!p.t)return'';
+  if(isHol(p))return`LIBUR — ${p.libur}`;
+  const d=toM(p.t)-nowM();
+  if(d>0&&d<=60)return`TUTUP DALAM ${d} MENIT`;
+  if(d<=0&&d>-30)return`TUTUP ${Math.abs(d)} MENIT LALU`;
+  return'';
+}
+function copyName(n){
+  const flash=()=>{const e=document.createElement('div');e.className='copy-flash';e.textContent='✓ '+n;document.body.appendChild(e);setTimeout(()=>e.remove(),1400);};
+  navigator.clipboard?navigator.clipboard.writeText(n).then(flash).catch(()=>{fb(n);flash();}):( fb(n),flash());
+}
+function fb(t){const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}a.remove();}
+
+const LS='tgl_';
+const todayKey=()=>{const d=new Date();return`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;};
+const lsG=k=>{try{return JSON.parse(localStorage.getItem(LS+k));}catch(e){return null;}};
+const lsS=(k,v)=>{try{localStorage.setItem(LS+k,JSON.stringify(v));}catch(e){}};
+function cleanOld(){const t=todayKey();try{Object.keys(localStorage).forEach(k=>{if(!k.startsWith(LS))return;const i=k.replace(LS,'');if(i.includes('-')&&!i.includes(t))localStorage.removeItem(k);});}catch(e){}}
+const loadFired=()=>new Set(Array.isArray(lsG('fired_'+todayKey()))?lsG('fired_'+todayKey()):[]);
+const saveFired=s=>lsS('fired_'+todayKey(),[...s]);
+const loadCnt=()=>lsG('cnt_'+todayKey())||0;
+const saveCnt=n=>lsS('cnt_'+todayKey(),n);
+let fired=loadFired(), alarmCnt=loadCnt();
+cleanOld(); updatePI();
+function updatePI(){
+  const e=document.getElementById('piD');
+  if(e)e.textContent=`${fired.size} alarm tercatat · ${todayKey()} · Reset otomatis besok`;
+}
+
+(function(){
+  const msgs=['INITIALIZING SYSTEM...','CONNECTING TO SERVER...','LOADING SCHEDULE DATA...','SYSTEM READY ◆'];
+  let i=0;const el=document.getElementById('wStat');
+  const iv=setInterval(()=>{i++;if(i<msgs.length)el.textContent=msgs[i];else clearInterval(iv);},900);
+  setTimeout(()=>{
+    document.getElementById('welcome').classList.add('hide');
+    document.getElementById('app').classList.add('on');
+    checkNotif();
+    document.getElementById('sA').textContent=alarmCnt;
+  },4000);
+})();
+
 let swReg=null;
-(async function(){if(!('serviceWorker' in navigator))return;const code=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('message',e=>{if(e.data&&e.data.type==='SHOW_NOTIF'){const{title,body,tag}=e.data;e.waitUntil(self.registration.showNotification(title,{body,tag,requireInteraction:true}));}});self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil(clients.matchAll({type:'window'}).then(cs=>{for(const c of cs)if(c.url&&'focus'in c)return c.focus();if(clients.openWindow)return clients.openWindow('/');}).catch(()=>{}));});`;try{const blob=new Blob([code],{type:'application/javascript'});swReg=await navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:'/'});}catch(e){}})();
+(async()=>{
+  if(!('serviceWorker'in navigator))return;
+  const code=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('message',e=>{if(e.data?.type==='SHOW_NOTIF'){const{title,body,tag}=e.data;e.waitUntil(self.registration.showNotification(title,{body,tag,requireInteraction:true}));}});self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil(clients.matchAll({type:'window'}).then(cs=>{for(const c of cs)if('focus'in c)return c.focus();if(clients.openWindow)return clients.openWindow('/');}).catch(()=>{}));});`;
+  try{const b=new Blob([code],{type:'application/javascript'});swReg=await navigator.serviceWorker.register(URL.createObjectURL(b),{scope:'/'});}catch(e){}
+})();
+
 let notifOk=false;
-function checkNotif(){const btn=document.getElementById('notifBtn'),banner=document.getElementById('notif-banner');if(typeof Notification==='undefined'){if(btn)btn.textContent='⚠ TIDAK DIDUKUNG';if(banner)banner.style.display='none';return;}if(Notification.permission==='granted'){notifOk=true;if(btn){btn.textContent='✅ AKTIF';btn.className='s-btn ok';}if(banner)banner.classList.remove('show');}else if(Notification.permission==='denied'){notifOk=false;if(btn){btn.textContent='❌ DIBLOKIR';btn.className='s-btn deny';}}else{if(btn)btn.textContent='🔔 NOTIFIKASI';if(banner)banner.classList.add('show');}}
-function requestNotif(){if(typeof Notification==='undefined'){alert('Browser tidak mendukung notifikasi OS.');return;}if(Notification.permission==='granted'){notifOk=true;checkNotif();return;}Notification.requestPermission().then(p=>{notifOk=(p==='granted');checkNotif();if(p==='granted')new Notification('✅ TOGEL LUBIS — NOTIFIKASI AKTIF',{body:'Alarm bet close akan muncul di sini.',requireInteraction:false,tag:'ok'});});}
-function closeNotifBanner(){document.getElementById('notif-banner').classList.remove('show');}
-function sendOSNotif(name,t,b){if(!notifOk||typeof Notification==='undefined')return;const title='🔔 BET CLOSE — TOGEL LUBIS',body=`⏰ ${name}\nTutup: ${t} WIB  |  Buka: ${b} WIB`,tag='BC-'+name+t;if(swReg&&swReg.active){swReg.active.postMessage({type:'SHOW_NOTIF',title,body,tag});return;}try{const n=new Notification(title,{body,requireInteraction:true,tag});n.onclick=()=>{window.focus();dismissAlarm();n.close()};}catch(e){}}
-document.addEventListener('contextmenu',e=>{if(!e.target.closest('.card-name'))e.preventDefault();});
-document.addEventListener('keydown',e=>{if(e.key==='F12'){e.preventDefault();return false;}if(e.ctrlKey&&e.shiftKey&&['i','I','j','J','c','C','k','K'].includes(e.key)){e.preventDefault();return false;}if(e.ctrlKey&&['u','U','s','S'].includes(e.key)){e.preventDefault();return false;}});
-let AC=null,auUnlocked=false;
-function getAC(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)({latencyHint:'playback',sampleRate:44100});if(AC.state==='suspended')AC.resume();return AC;}
-function unlockAu(){if(auUnlocked)return;try{const ac=getAC(),b=ac.createBuffer(1,1,22050),s=ac.createBufferSource();s.buffer=b;s.connect(ac.destination);s.start(0);auUnlocked=true;}catch(e){}}
-['click','touchstart','keydown','pointerdown'].forEach(ev=>document.addEventListener(ev,unlockAu,{once:false,passive:true}));
-function makeDing(ac,freq,t,dur,vol,dest){const o=ac.createOscillator();o.type='sine';o.frequency.value=freq;const o2=ac.createOscillator();o2.type='sine';o2.frequency.value=freq*2.756;const o3=ac.createOscillator();o3.type='sine';o3.frequency.value=freq*5.404;const e=ac.createGain(),e2=ac.createGain(),e3=ac.createGain();e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(vol,t+0.008);e.gain.exponentialRampToValueAtTime(vol*0.6,t+0.12);e.gain.exponentialRampToValueAtTime(0.001,t+dur);e2.gain.setValueAtTime(0,t);e2.gain.linearRampToValueAtTime(vol*0.18,t+0.008);e2.gain.exponentialRampToValueAtTime(0.001,t+dur*0.55);e3.gain.setValueAtTime(0,t);e3.gain.linearRampToValueAtTime(vol*0.06,t+0.008);e3.gain.exponentialRampToValueAtTime(0.001,t+dur*0.3);const dl=ac.createDelay(0.6);dl.delayTime.value=0.22;const fb=ac.createGain();fb.gain.value=0.28;const wt=ac.createGain();wt.gain.value=0.32;o.connect(e);e.connect(dest);e.connect(wt);o2.connect(e2);e2.connect(dest);o3.connect(e3);e3.connect(dest);wt.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(dest);o.start(t);o.stop(t+dur+0.1);o2.start(t);o2.stop(t+dur*0.6);o3.start(t);o3.stop(t+dur*0.35);}
-function playAlarm(){try{const ac=getAC(),c=ac.createDynamicsCompressor();c.threshold.value=-6;c.ratio.value=4;c.attack.value=0.005;c.release.value=0.1;const mv=ac.createGain();mv.gain.value=0.72;c.connect(mv);mv.connect(ac.destination);const t=ac.currentTime+0.04;makeDing(ac,784,t,1.8,0.70,c);makeDing(ac,659.25,t+0.52,1.8,0.65,c);makeDing(ac,523.25,t+1.04,2.4,0.60,c);}catch(e){}}
-function playHoki(){try{const ac=getAC(),c=ac.createDynamicsCompressor();c.threshold.value=-6;c.ratio.value=4;c.attack.value=0.005;c.release.value=0.1;const mv=ac.createGain();mv.gain.value=0.75;c.connect(mv);mv.connect(ac.destination);const t=ac.currentTime+0.04;makeDing(ac,523.25,t,1.6,0.60,c);makeDing(ac,659.25,t+0.4,1.6,0.64,c);makeDing(ac,784,t+0.8,1.6,0.68,c);makeDing(ac,1046.5,t+1.2,2.6,0.72,c);}catch(e){}}
-let loopT=null,bgT=null,looping=false,loopH=false,lastPlay=0;
-function startLoop(isH){stopLoop();looping=true;loopH=isH;const INT=isH?6000:5500;unlockAu();function playNow(){if(!looping)return;if(AC&&AC.state==='suspended'){AC.resume().then(()=>{if(looping)(loopH?playHoki:playAlarm)();}).catch(()=>{});}else(loopH?playHoki:playAlarm)();lastPlay=Date.now();}playNow();loopT=setInterval(()=>{if(!looping)return;playNow();},INT);bgT=setInterval(()=>{if(!looping)return;if(AC&&AC.state==='suspended')AC.resume().catch(()=>{});if(Date.now()-lastPlay>INT+1200)playNow();},100);}
-function stopLoop(){looping=false;if(loopT){clearInterval(loopT);loopT=null;}if(bgT){clearInterval(bgT);bgT=null;}}
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(AC)AC.resume().then(()=>{if(looping)setTimeout(()=>{if(looping)(loopH?playHoki:playAlarm)();},80);}).catch(()=>{});if(missedBg.length>0){showReturnBanner();missedBg.forEach(a=>showToast(a.n,a.t+' WIB',a.b+' WIB',a.isH));missedBg=[];}}});
+function checkNotif(){
+  const btn=document.getElementById('notifBtn'),banner=document.getElementById('notif-banner');
+  if(typeof Notification==='undefined'){btn&&(btn.textContent='⚠');return;}
+  if(Notification.permission==='granted'){notifOk=true;btn&&(btn.textContent='✅ NOTIF',btn.className='tb-btn ok');banner?.classList.remove('show');}
+  else if(Notification.permission==='denied'){notifOk=false;btn&&(btn.textContent='❌ NOTIF',btn.className='tb-btn bad');}
+  else{banner?.classList.add('show');}
+}
+function reqNotif(){
+  if(typeof Notification==='undefined'){alert('Browser tidak mendukung notifikasi.');return;}
+  if(Notification.permission==='granted'){notifOk=true;checkNotif();return;}
+  Notification.requestPermission().then(p=>{notifOk=(p==='granted');checkNotif();if(p==='granted')new Notification('✅ TOGEL LUBIS AKTIF',{body:'Alarm bet close siap.',tag:'ok'});});
+}
+function closeNB(){document.getElementById('notif-banner').classList.remove('show');}
+function sendOSN(n,t,b){
+  if(!notifOk||typeof Notification==='undefined')return;
+  const title='🔔 BET CLOSE',body=`${n}\nTutup: ${t} · Buka: ${b}`,tag='bc-'+n+t;
+  if(swReg?.active){swReg.active.postMessage({type:'SHOW_NOTIF',title,body,tag});return;}
+  try{const x=new Notification(title,{body,requireInteraction:true,tag});x.onclick=()=>{window.focus();dismissAlarm();x.close()};}catch(e){}
+}
+
+document.addEventListener('contextmenu',e=>{if(!e.target.closest('.c-name'))e.preventDefault();});
+document.addEventListener('keydown',e=>{
+  if(e.key==='F12'){e.preventDefault();return false;}
+  if(e.ctrlKey&&e.shiftKey&&'ijckIJCK'.includes(e.key)){e.preventDefault();return false;}
+  if(e.ctrlKey&&'uUsS'.includes(e.key)){e.preventDefault();return false;}
+});
+
+let AC=null,auOk=false;
+const getAC=()=>{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)({latencyHint:'playback',sampleRate:44100});if(AC.state==='suspended')AC.resume();return AC;};
+function unlockAu(){if(auOk)return;try{const ac=getAC(),b=ac.createBuffer(1,1,22050),s=ac.createBufferSource();s.buffer=b;s.connect(ac.destination);s.start(0);auOk=true;}catch(e){}}
+['click','touchstart','keydown','pointerdown'].forEach(ev=>document.addEventListener(ev,unlockAu,{passive:true}));
+function ding(ac,f,t,dur,v,dst){
+  const o=ac.createOscillator(),o2=ac.createOscillator(),o3=ac.createOscillator();
+  o.type='sine';o.frequency.value=f;o2.type='sine';o2.frequency.value=f*2.756;o3.type='sine';o3.frequency.value=f*5.404;
+  const e=ac.createGain(),e2=ac.createGain(),e3=ac.createGain();
+  e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(v,t+.008);e.gain.exponentialRampToValueAtTime(v*.6,t+.12);e.gain.exponentialRampToValueAtTime(.001,t+dur);
+  e2.gain.setValueAtTime(0,t);e2.gain.linearRampToValueAtTime(v*.18,t+.008);e2.gain.exponentialRampToValueAtTime(.001,t+dur*.55);
+  e3.gain.setValueAtTime(0,t);e3.gain.linearRampToValueAtTime(v*.06,t+.008);e3.gain.exponentialRampToValueAtTime(.001,t+dur*.3);
+  const dl=ac.createDelay(.6);dl.delayTime.value=.22;const fb=ac.createGain();fb.gain.value=.28;const wt=ac.createGain();wt.gain.value=.32;
+  o.connect(e);e.connect(dst);e.connect(wt);o2.connect(e2);e2.connect(dst);o3.connect(e3);e3.connect(dst);
+  wt.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(dst);
+  o.start(t);o.stop(t+dur+.1);o2.start(t);o2.stop(t+dur*.6);o3.start(t);o3.stop(t+dur*.35);
+}
+function playAlarm(){try{const ac=getAC(),c=ac.createDynamicsCompressor();c.threshold.value=-6;c.ratio.value=4;c.attack.value=.005;c.release.value=.1;const mv=ac.createGain();mv.gain.value=.72;c.connect(mv);mv.connect(ac.destination);const t=ac.currentTime+.04;ding(ac,784,t,1.8,.7,c);ding(ac,659.25,t+.52,1.8,.65,c);ding(ac,523.25,t+1.04,2.4,.6,c);}catch(e){}}
+function playHoki(){try{const ac=getAC(),c=ac.createDynamicsCompressor();c.threshold.value=-6;c.ratio.value=4;c.attack.value=.005;c.release.value=.1;const mv=ac.createGain();mv.gain.value=.75;c.connect(mv);mv.connect(ac.destination);const t=ac.currentTime+.04;ding(ac,523.25,t,1.6,.6,c);ding(ac,659.25,t+.4,1.6,.64,c);ding(ac,784,t+.8,1.6,.68,c);ding(ac,1046.5,t+1.2,2.6,.72,c);}catch(e){}}
+let lpT=null,bgT=null,lping=false,lpH=false,lpLast=0;
+function startLoop(h){stopLoop();lping=true;lpH=h;const INT=h?6000:5500;unlockAu();function p(){if(!lping)return;if(AC?.state==='suspended')AC.resume().then(()=>lping&&(lpH?playHoki:playAlarm)()).catch(()=>{});else(lpH?playHoki:playAlarm)();lpLast=Date.now();}p();lpT=setInterval(()=>lping&&p(),INT);bgT=setInterval(()=>{if(!lping)return;if(AC?.state==='suspended')AC.resume().catch(()=>{});if(Date.now()-lpLast>INT+1200)p();},100);}
+function stopLoop(){lping=false;if(lpT){clearInterval(lpT);lpT=null;}if(bgT){clearInterval(bgT);bgT=null;}}
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden){
+    AC?.resume().then(()=>{if(lping)setTimeout(()=>lping&&(lpH?playHoki:playAlarm)(),80);}).catch(()=>{});
+    if(missedBg.length){showRB();missedBg.forEach(a=>showToast(a.n,a.t+' WIB',a.b+' WIB',a.h));missedBg=[];}
+  }
+});
 function testSuara(h){unlockAu();setTimeout(()=>h?playHoki():playAlarm(),60);}
+
 const toastMap=new Map();
-function showToast(name,t,b,isH,dur=10000){const w=document.getElementById('toast-wrap'),rip=document.getElementById('toast-ripple');rip.style.display='block';setTimeout(()=>rip.style.display='none',3500);const id='t'+Date.now()+Math.random().toString(36).slice(2,6);const icon=isH?'◆':'🔔',tag=isH?'HOKI · SETIAP JAM':'BET CLOSE ALERT';const el=document.createElement('div');el.className='toast';el.id=id;el.style.setProperty('--dur',dur+'ms');el.innerHTML=`<div class="toast-top"></div><div class="toast-body"><div class="toast-icon ${isH?'hoki':''}">${icon}</div><div class="toast-info"><div class="toast-tag ${isH?'h':''}">${tag}</div><div class="toast-title">${name}</div><div class="toast-times"><div class="toast-ti"><div class="toast-ti-l">BET CLOSE</div><div class="toast-ti-v">${t}</div></div><div style="color:#2a3a50;padding:0 10px;font-size:16px">→</div><div class="toast-ti"><div class="toast-ti-l">BUKA KEMBALI</div><div class="toast-ti-v">${b}</div></div></div></div><button class="toast-x" onclick="closeToast('${id}')">✕</button></div><div class="toast-prog"><div class="toast-prog-bar"></div></div>`;w.appendChild(el);const tid=setTimeout(()=>closeToast(id),dur);toastMap.set(id,tid);}
-function closeToast(id){const el=document.getElementById(id);if(!el)return;el.classList.add('out');setTimeout(()=>el&&el.remove(),420);if(toastMap.has(id)){clearTimeout(toastMap.get(id));toastMap.delete(id);}}
-function testToast(){unlockAu();setTimeout(playAlarm,60);showToast('HONGKONG LOTTO','22:59 WIB','23:15 WIB',false);sendOSNotif('HONGKONG LOTTO','22:59','23:15');}
+function showToast(name,t,b,isH,dur=10000){
+  const w=document.getElementById('toast-wrap');
+  const id='t'+Date.now()+Math.random().toString(36).slice(2,5);
+  const ico=isH?'◆':'🔔',tag=isH?'HOKI · SETIAP JAM':'BET CLOSE ALERT';
+  const el=document.createElement('div');el.className='toast';el.id=id;el.style.setProperty('--dur',dur+'ms');
+  el.innerHTML=`<div class="toast-bar"></div><div class="toast-body"><div class="toast-ico ${isH?'h':''}">${ico}</div><div class="toast-inf"><div class="toast-tag ${isH?'h':''}">${tag}</div><div class="toast-name">${name}</div><div class="toast-times"><div><div class="t-tl">BET CLOSE</div><div class="t-tv">${t}</div></div><div style="color:#334155;padding:0 10px;font-size:14px">→</div><div><div class="t-tl">BUKA KEMBALI</div><div class="t-tv">${b}</div></div></div></div><button class="toast-x" onclick="closeToast('${id}')">✕</button></div><div class="toast-prog"><div class="toast-pb"></div></div>`;
+  w.appendChild(el);
+  const tid=setTimeout(()=>closeToast(id),dur);toastMap.set(id,tid);
+}
+function closeToast(id){const el=document.getElementById(id);if(!el)return;el.classList.add('out');setTimeout(()=>el?.remove(),350);if(toastMap.has(id)){clearTimeout(toastMap.get(id));toastMap.delete(id);}}
+function testToast(){unlockAu();setTimeout(playAlarm,60);showToast('HONGKONG LOTTO','22:59 WIB','23:15 WIB',false);}
+
 let missedBg=[];
-function showReturnBanner(){document.getElementById('rb-names').textContent=missedBg.map(a=>a.n).join(' · ');document.getElementById('return-banner').classList.add('show');}
-function closeReturnBanner(){document.getElementById('return-banner').classList.remove('show');}
+function showRB(){document.getElementById('rb-names').textContent=missedBg.map(a=>a.n).join(' · ');document.getElementById('rb').classList.add('show');}
+function closeRB(){document.getElementById('rb').classList.remove('show');}
+
 let curFilter='all';
-function aKey(n,t){return`${todayKey()}_${n}_${t}`;}
+const aKey=(n,t)=>`${todayKey()}_${n}_${t}`;
 function renderCards(){
   const grid=document.getElementById('grid');
   const q=(document.getElementById('srch').value||'').toUpperCase().trim();
@@ -628,41 +803,113 @@ function renderCards(){
   DATA.forEach(p=>{
     const st=getStatus(p),ih=isHol(p);
     if(st==='open')nO++;else if(st==='closed')nC++;else if(st==='soon')nS++;
-    if(curFilter==='holiday'){if(!ih)return;}
-    else if(curFilter!=='all'&&st!==curFilter)return;
+    if(curFilter==='holiday'&&!ih)return;
+    else if(curFilter!=='all'&&curFilter!=='holiday'&&st!==curFilter)return;
     if(q&&!p.n.includes(q))return;
-    const lbl=st==='open'?'✅ BUKA':st==='soon'?'⚡ SEGERA':'🔴 TUTUP';
-    const bcls=st==='open'?'badge-open':st==='soon'?'badge-soon':'badge-closed';
+    const lbl=st==='open'?'BUKA':st==='soon'?'SEGERA':'TUTUP';
+    const bcls=st==='open'?'b-open':st==='soon'?'b-soon':'b-closed';
     const cd=cdTxt(p);
     const fk=p.hoki?null:(p.t?aKey(p.n,p.t):null);
     const hf=fk?fired.has(fk):false;
-    let body=p.hoki?`<div class="hoki-row"><div class="hoki-dot"></div><div class="hoki-txt">SETIAP JAM · 24× SEHARI</div></div>`:`<div class="card-times"><div class="ct ct-close"><div class="ct-lbl">BET CLOSE</div><div class="ct-val">${p.t}<span class="ct-wib">WIB</span></div></div><div class="ct ct-open"><div class="ct-lbl">BUKA KEMBALI</div><div class="ct-val">${p.b}<span class="ct-wib">WIB</span></div></div></div>`;
-    const hlb=ih&&!p.hoki?`<div class="card-libur">⚠ LIBUR HARI INI: ${p.libur}</div>`:'';
-    const fb=hf?`<div class="alarm-fired-badge">🔔 ALARM SUDAH BUNYI HARI INI</div>`:'';
     const ne=p.n.replace(/'/g,"\\'");
+    let body=p.hoki
+      ?`<div class="c-hoki"><div class="hoki-dot"></div><div class="hoki-txt">SETIAP JAM · 24× SEHARI</div></div>`
+      :`<div class="c-times"><div class="ct tc"><div class="ct-lbl">BET CLOSE</div><div class="ct-val">${p.t}<span class="ct-wib">WIB</span></div></div><div class="ct to"><div class="ct-lbl">BUKA KEMBALI</div><div class="ct-val">${p.b}<span class="ct-wib">WIB</span></div></div></div>`;
+    const hlb=ih&&!p.hoki?`<div class="c-libur">⚠ LIBUR: ${p.libur}</div>`:'';
+    const fb2=hf?`<div class="c-fired">🔔 ALARM SUDAH BUNYI HARI INI</div>`:'';
     const div=document.createElement('div');
-    div.className=`card rgb-box ${st==='closed'?'closed':st==='soon'?'soon':''}`;
-    div.innerHTML=`<div class="led-t"></div><div class="led-b"></div><div class="led-l"></div><div class="led-r"></div><div class="led-dot tl"></div><div class="led-dot tr"></div><div class="led-dot bl"></div><div class="led-dot br"></div><div class="card-head"><div class="card-name" onclick="copyName('${ne}')"><span class="copy-tip">📋 KLIK UNTUK COPY</span>${p.n}</div><div class="badge ${bcls}">${lbl}</div></div><div class="card-day">${p.d}</div><div class="card-divider"></div>${hlb}${body}${cd?`<div class="card-cd">${cd}</div>`:''}${fb}`;
+    div.className=`card ${st==='closed'?'closed':st==='soon'?'soon':''}`;
+    div.innerHTML=`
+      <div class="led-strip led-h lt"></div><div class="led-strip led-h lb"></div>
+      <div class="led-strip led-v ll"></div><div class="led-strip led-v lr"></div>
+      <div class="led-dot dtl"></div><div class="led-dot dtr"></div>
+      <div class="led-dot dbl"></div><div class="led-dot dbr"></div>
+      <div class="c-head">
+        <div class="c-name" onclick="copyName('${ne}')"><span class="ctip">📋 KLIK COPY</span>${p.n}</div>
+        <div class="badge ${bcls}">${lbl}</div>
+      </div>
+      <div class="c-day">${p.d}</div>
+      <div class="c-div"></div>
+      ${hlb}${body}
+      ${cd?`<div class="c-cd">${cd}</div>`:''}
+      ${fb2}`;
     grid.appendChild(div);
   });
-  document.getElementById('sO').textContent=nO;document.getElementById('sC').textContent=nC;
-  document.getElementById('stT').textContent=DATA.length;document.getElementById('stO').textContent=nO;
-  document.getElementById('stC').textContent=nC;document.getElementById('stS').textContent=nS;
+  document.getElementById('sO').textContent=nO;
+  document.getElementById('sC').textContent=nC;
+  document.getElementById('stT').textContent=DATA.length;
+  document.getElementById('stO').textContent=nO;
+  document.getElementById('stC').textContent=nC;
+  document.getElementById('stS').textContent=nS;
 }
-function setFilter(f,btn){curFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderCards();}
-function tickClock(){const n=new Date();document.getElementById('clkM').textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;document.getElementById('clkD').textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MON[n.getMonth()]} ${n.getFullYear()}`;document.getElementById('aTime').textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;}
-function tickNext(){const ns=nowS(),nm=~~(ns/60);let best=Infinity,bn='',bt='';DATA.forEach(p=>{if(p.hoki){const nx=((~~(ns/3600)+1)*3600)-ns;if(nx<best){best=nx;bn='HOKIDRAW 5D';bt=`${pad((~~(ns/3600)+1)%24)}:00`;}return;}if(!p.t||isHol(p))return;let dm=toM(p.t)-nm;if(dm<=0)dm+=1440;const ds=dm*60-(ns%60);if(ds>0&&ds<best){best=ds;bn=p.n;bt=p.t;}});document.getElementById('clkN').textContent=best<Infinity?fmtCd(best):'--:--:--';document.getElementById('clkNI').textContent=bn?`${bn}  ·  ${bt} WIB`:'';} 
+function setFilter(f,btn){curFilter=f;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderCards();}
+
+function tickClock(){
+  const n=new Date();
+  const ts=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
+  document.getElementById('clkM').textContent=ts;
+  document.getElementById('clkBig').textContent=ts;
+  document.getElementById('clkD').textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MON[n.getMonth()]} ${n.getFullYear()}`;
+  document.getElementById('aTime').textContent=ts;
+}
+function tickNext(){
+  const ns=nowS(),nm=~~(ns/60);let best=Infinity,bn='',bt='';
+  DATA.forEach(p=>{
+    if(p.hoki){const nx=((~~(ns/3600)+1)*3600)-ns;if(nx<best){best=nx;bn='HOKIDRAW 5D';bt=`${pad((~~(ns/3600)+1)%24)}:00`;}return;}
+    if(!p.t||isHol(p))return;
+    let dm=toM(p.t)-nm;if(dm<=0)dm+=1440;const ds=dm*60-(ns%60);
+    if(ds>0&&ds<best){best=ds;bn=p.n;bt=p.t;}
+  });
+  document.getElementById('clkN').textContent=best<Infinity?fmtCd(best):'--:--:--';
+  document.getElementById('clkNI').textContent=bn?`${bn} · ${bt} WIB`:'';
+}
+
 let queue=[],showing=false,titleT=null;
-function enqueue(name,t,b,isH=false){const k=isH?`${todayKey()}_HOKI_${t}`:`${todayKey()}_${name}_${t}`;if(fired.has(k))return;fired.add(k);saveFired(fired);alarmCnt++;saveCnt(alarmCnt);document.getElementById('sA').textContent=alarmCnt;document.getElementById('stA').textContent=alarmCnt;updatePI();queue.push({name,t,b,isH});updateQ();sendOSNotif(name,t,b);if(!document.hidden)showToast(name,t+' WIB',b+' WIB',isH);else missedBg.push({n:name,t,b,isH});if(!showing)showNext();}
-function showNext(){if(!queue.length){showing=false;return;}showing=true;const a=queue[0];document.getElementById('aMkt').textContent=a.name;document.getElementById('aTutup').textContent=a.t+' WIB';document.getElementById('aBuka').textContent=a.b+' WIB';document.getElementById('overlay').classList.add('on');updateQ();startLoop(a.isH);flashTitle(a.name);}
-function dismissAlarm(){queue.shift();document.getElementById('overlay').classList.remove('on');stopLoop();stopFlash();updateQ();renderCards();document.querySelectorAll('.toast').forEach(el=>closeToast(el.id));closeReturnBanner();if(queue.length)setTimeout(showNext,400);else showing=false;}
-function updateQ(){const n=queue.length;document.getElementById('qnum').textContent=n;document.getElementById('q-badge').style.display=n>1?'block':'none';}
-function flashTitle(name){stopFlash();let on=true;titleT=setInterval(()=>{document.title=on?`🔔 ${name} — BET CLOSE!`:'⏰ TOGEL LUBIS · ALARM!';on=!on;},700);}
+function enqueue(name,t,b,isH=false){
+  const k=isH?`${todayKey()}_HOKI_${t}`:`${todayKey()}_${name}_${t}`;
+  if(fired.has(k))return;
+  fired.add(k);saveFired(fired);alarmCnt++;saveCnt(alarmCnt);
+  document.getElementById('sA').textContent=alarmCnt;updatePI();
+  queue.push({name,t,b,isH});updateQ();sendOSN(name,t,b);
+  if(!document.hidden)showToast(name,t+' WIB',b+' WIB',isH);
+  else missedBg.push({n:name,t,b,h:isH});
+  if(!showing)showNext();
+}
+function showNext(){
+  if(!queue.length){showing=false;return;}showing=true;const a=queue[0];
+  document.getElementById('aMkt').textContent=a.name;
+  document.getElementById('aTutup').textContent=a.t+' WIB';
+  document.getElementById('aBuka').textContent=a.b+' WIB';
+  document.getElementById('overlay').classList.add('on');
+  updateQ();startLoop(a.isH);flashTitle(a.name);
+}
+function dismissAlarm(){
+  queue.shift();document.getElementById('overlay').classList.remove('on');
+  stopLoop();stopFlash();updateQ();renderCards();
+  document.querySelectorAll('.toast').forEach(el=>closeToast(el.id));closeRB();
+  if(queue.length)setTimeout(showNext,400);else showing=false;
+}
+function updateQ(){const n=queue.length;document.getElementById('qnum').textContent=n;document.getElementById('qbadge').style.display=n>1?'block':'none';}
+function flashTitle(n){stopFlash();let on=true;titleT=setInterval(()=>{document.title=on?`🔔 ${n} — BET CLOSE!`:'⏰ TOGEL LUBIS';on=!on;},700);}
 function stopFlash(){if(titleT){clearInterval(titleT);titleT=null;}document.title='TOGEL LUBIS · ALARM SYSTEM';}
+
 let lastMin=-1;
-function checkAlarms(){const now=new Date(),cm=now.getHours()*60+now.getMinutes(),ch=now.getHours();if(cm===lastMin)return;lastMin=cm;DATA.forEach(p=>{if(p.hoki){if(now.getMinutes()===0)enqueue('HOKIDRAW 5D',`${pad(ch)}:00`,`${pad((ch+1)%24)}:00`,true);return;}if(!p.t||isHol(p))return;if(toM(p.t)===cm)enqueue(p.n,p.t,p.b,false);});}
+function checkAlarms(){
+  const now=new Date(),cm=now.getHours()*60+now.getMinutes(),ch=now.getHours();
+  if(cm===lastMin)return;lastMin=cm;
+  DATA.forEach(p=>{
+    if(p.hoki){if(now.getMinutes()===0)enqueue('HOKIDRAW 5D',`${pad(ch)}:00`,`${pad((ch+1)%24)}:00`,true);return;}
+    if(!p.t||isHol(p))return;
+    if(toM(p.t)===cm)enqueue(p.n,p.t,p.b,false);
+  });
+}
+
 let lastRM=-1;
-function loop(){tickClock();tickNext();checkAlarms();const m=new Date().getMinutes();if(m!==lastRM){lastRM=m;renderCards();}}
+function loop(){
+  tickClock();tickNext();checkAlarms();
+  const m=new Date().getMinutes();
+  if(m!==lastRM){lastRM=m;renderCards();}
+}
 renderCards();loop();setInterval(loop,500);
 </script>
 </body>
