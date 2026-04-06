@@ -521,6 +521,51 @@ body { background:var(--bg); color:var(--txt); font-family:var(--fr); font-weigh
 
 .c-fired { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:7px 14px; background:rgba(52,211,153,0.05); border:1px solid rgba(52,211,153,0.22); font-family:var(--fo); font-size:8px; color:rgba(167,243,208,0.78); letter-spacing:2px; }
 
+/* ── LIVE RESULT BUTTON ── */
+.c-live-btn {
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  margin-top:12px; padding:11px 16px; width:100%;
+  background:linear-gradient(135deg, rgba(34,211,238,0.06) 0%, rgba(34,211,238,0.02) 100%);
+  border:1px solid rgba(34,211,238,0.28); border-top:2px solid rgba(34,211,238,0.55);
+  color:rgba(165,243,252,0.88); font-family:var(--fo); font-size:8px; font-weight:700;
+  letter-spacing:3px; text-decoration:none; cursor:pointer;
+  position:relative; overflow:hidden;
+  transition:all .25s cubic-bezier(.23,1,.32,1);
+  box-shadow:0 2px 12px rgba(0,0,0,0.40), inset 0 1px 0 rgba(34,211,238,0.08);
+}
+.c-live-btn::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(34,211,238,0.10) 0%, transparent 100%);
+  opacity:0; transition:opacity .2s;
+}
+.c-live-btn::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(34,211,238,0.45), transparent);
+}
+.c-live-btn:hover {
+  background:linear-gradient(135deg, rgba(34,211,238,0.14) 0%, rgba(34,211,238,0.06) 100%);
+  border-color:rgba(34,211,238,0.55); border-top-color:rgba(34,211,238,0.85);
+  color:var(--cyan2); transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(34,211,238,0.12), 0 2px 8px rgba(0,0,0,0.50), inset 0 1px 0 rgba(34,211,238,0.12);
+}
+.c-live-btn:hover::before { opacity:1; }
+.c-live-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--cyan);
+  box-shadow:0 0 6px rgba(34,211,238,0.8); flex-shrink:0;
+  animation:pulse-g 1.8s ease-in-out infinite;
+}
+.card.closed .c-live-btn {
+  border-color:rgba(248,113,113,0.22); border-top-color:rgba(248,113,113,0.45);
+  background:linear-gradient(135deg, rgba(248,113,113,0.05) 0%, rgba(248,113,113,0.02) 100%);
+  color:rgba(252,165,165,0.75);
+}
+.card.closed .c-live-btn:hover {
+  border-color:rgba(248,113,113,0.50); border-top-color:rgba(248,113,113,0.80);
+  color:var(--red2); box-shadow:0 6px 20px rgba(248,113,113,0.10);
+}
+.card.closed .c-live-dot { background:var(--red); box-shadow:0 0 6px rgba(248,113,113,0.8); }
+.card.soon .c-live-btn { border-color:rgba(34,211,238,0.40); border-top-color:rgba(34,211,238,0.70); }
+
 .copy-flash {
   position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
   background:linear-gradient(135deg, rgba(14,10,4,0.99) 0%, rgba(4,8,20,0.99) 100%);
@@ -812,95 +857,95 @@ body { background:var(--bg); color:var(--txt); font-family:var(--fr); font-weigh
    ═══════════════════════════════════════════════════════════ */
 const DATA=[
   // ── 00:xx ──
-  {n:"HOKIDRAW 5D",        d:"Senin – Minggu",                              t:null,   b:null,   hoki:true, offDays:[], libur:""},
-  {n:"TOTOMACAU PAGI",     d:"Senin – Minggu",                              t:"00:00",b:"00:15",offDays:[], libur:""},
-  {n:"KENTUCKY MIDDAY",    d:"Senin – Minggu",                              t:"00:05",b:"00:20",offDays:[], libur:""},
-  {n:"FLORIDA MIDDAY",     d:"Senin – Minggu",                              t:"00:20",b:"00:30",offDays:[], libur:""},
-  {n:"HUAHIN 0100",        d:"Senin – Minggu",                              t:"00:45",b:"01:00",offDays:[], libur:""},
+  {n:"HOKIDRAW 5D",        d:"Senin – Minggu",                              t:null,   b:null,   hoki:true, offDays:[], libur:"",   url:"https://hokidraw.com/live-draw.html"},
+  {n:"TOTOMACAU PAGI",     d:"Senin – Minggu",                              t:"00:00",b:"00:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"KENTUCKY MIDDAY",    d:"Senin – Minggu",                              t:"00:05",b:"00:20",offDays:[], libur:"",   url:"https://play.kylottery.com/en-us/playnow/pick4.html"},
+  {n:"FLORIDA MIDDAY",     d:"Senin – Minggu",                              t:"00:20",b:"00:30",offDays:[], libur:"",   url:"https://floridalottery.com/games/draw-games/pick-4"},
+  {n:"HUAHIN 0100",        d:"Senin – Minggu",                              t:"00:45",b:"01:00",offDays:[], libur:"",   url:"https://huahinlottery.com/"},
 
   // ── 01:xx ──
-  {n:"BANGKOK 0130",       d:"Senin – Minggu",                              t:"01:15",b:"01:30",offDays:[], libur:""},
-  {n:"NEWYORK MIDDAY",     d:"Senin – Minggu",                              t:"01:15",b:"01:25",offDays:[], libur:""},
-  {n:"BULLSEYE",           d:"Senin – Minggu",                              t:"01:00",b:"01:15",offDays:[], libur:""},
-  {n:"CAROLINA DAY",       d:"Senin – Minggu",                              t:"01:45",b:"02:00",offDays:[], libur:""},
+  {n:"BULLSEYE",           d:"Senin – Minggu",                              t:"01:00",b:"01:15",offDays:[], libur:"",   url:"https://mylotto.co.nz/results/bullseye"},
+  {n:"BANGKOK 0130",       d:"Senin – Minggu",                              t:"01:15",b:"01:30",offDays:[], libur:"",   url:"https://bangkokpoolstoday.com/"},
+  {n:"NEWYORK MIDDAY",     d:"Senin – Minggu",                              t:"01:15",b:"01:25",offDays:[], libur:"",   url:"https://nylottery.ny.gov/"},
+  {n:"CAROLINA DAY",       d:"Senin – Minggu",                              t:"01:45",b:"02:00",offDays:[], libur:"",   url:"https://nclottery.com/Pick4"},
 
   // ── 02:xx ──
-  {n:"BRUNEI 02",          d:"Senin – Minggu",                              t:"02:30",b:"02:45",offDays:[], libur:""},
+  {n:"BRUNEI 02",          d:"Senin – Minggu",                              t:"02:30",b:"02:45",offDays:[], libur:"",   url:"https://bruneipools.com/"},
 
   // ── 03:xx ──
-  {n:"OREGON 03",          d:"Senin – Minggu",                              t:"02:50",b:"03:00",offDays:[], libur:""},
+  {n:"OREGON 03",          d:"Senin – Minggu",                              t:"02:50",b:"03:00",offDays:[], libur:"",   url:"https://www.oregonlottery.org/pick-4/winning-numbers/"},
 
   // ── 05:xx – 06:xx ──
-  {n:"OREGON 06",          d:"Senin – Minggu",                              t:"05:50",b:"06:00",offDays:[], libur:""},
+  {n:"OREGON 06",          d:"Senin – Minggu",                              t:"05:50",b:"06:00",offDays:[], libur:"",   url:"https://www.oregonlottery.org/pick-4/winning-numbers/"},
 
   // ── 08:xx ──
-  {n:"CALIFORNIA",         d:"Senin – Minggu",                              t:"08:25",b:"08:30",offDays:[], libur:""},
-  {n:"FLORIDA EVENING",    d:"Senin – Minggu",                              t:"08:35",b:"08:45",offDays:[], libur:""},
-  {n:"OREGON 09",          d:"Senin – Minggu",                              t:"08:50",b:"09:00",offDays:[], libur:""},
+  {n:"CALIFORNIA",         d:"Senin – Minggu",                              t:"08:25",b:"08:30",offDays:[], libur:"",   url:"https://www.wral.com/video/daytime-pick-3-and-pick-4-streaming/2570000/"},
+  {n:"FLORIDA EVENING",    d:"Senin – Minggu",                              t:"08:35",b:"08:45",offDays:[], libur:"",   url:"https://floridalottery.com/games/draw-games/pick-4"},
+  {n:"OREGON 09",          d:"Senin – Minggu",                              t:"08:50",b:"09:00",offDays:[], libur:"",   url:"https://www.oregonlottery.org/pick-4/winning-numbers/"},
 
   // ── 09:xx ──
-  {n:"BANGKOK 0930",       d:"Senin – Minggu",                              t:"09:15",b:"09:30",offDays:[], libur:""},
-  {n:"NEWYORK EVENING",    d:"Senin – Minggu",                              t:"09:25",b:"09:35",offDays:[], libur:""},
-  {n:"KENTUCKY EVENING",   d:"Senin – Minggu",                              t:"09:45",b:"10:00",offDays:[], libur:""},
+  {n:"BANGKOK 0930",       d:"Senin – Minggu",                              t:"09:15",b:"09:30",offDays:[], libur:"",   url:"https://bangkokpoolstoday.com/"},
+  {n:"NEWYORK EVENING",    d:"Senin – Minggu",                              t:"09:25",b:"09:35",offDays:[], libur:"",   url:"https://nylottery.ny.gov/"},
+  {n:"KENTUCKY EVENING",   d:"Senin – Minggu",                              t:"09:45",b:"10:00",offDays:[], libur:"",   url:"https://www.kylottery.com/apps/draw_games"},
 
   // ── 10:xx ──
-  {n:"CAROLINA EVENING",   d:"Senin – Minggu",                              t:"10:17",b:"10:22",offDays:[], libur:""},
-  {n:"TOTO CAMBODIA",      d:"Senin – Minggu",                              t:"10:45",b:"11:00",offDays:[], libur:""},
+  {n:"CAROLINA EVENING",   d:"Senin – Minggu",                              t:"10:17",b:"10:22",offDays:[], libur:"",   url:"https://nclottery.com/Pick4"},
+  {n:"TOTO CAMBODIA",      d:"Senin – Minggu",                              t:"10:45",b:"11:00",offDays:[], libur:"",   url:"https://totocambodialive.com/"},
 
   // ── 11:xx ──
-  {n:"CHELSEA 11",         d:"Senin – Minggu",                              t:"11:00",b:"11:15",offDays:[], libur:""},
-  {n:"OREGON 12",          d:"Senin – Minggu",                              t:"11:50",b:"12:00",offDays:[], libur:""},
+  {n:"CHELSEA 11",         d:"Senin – Minggu",                              t:"11:00",b:"11:15",offDays:[], libur:"",   url:"https://chelseapools.co.uk/"},
+  {n:"OREGON 12",          d:"Senin – Minggu",                              t:"11:50",b:"12:00",offDays:[], libur:"",   url:"https://www.oregonlottery.org/pick-4/winning-numbers/"},
 
   // ── 12:xx ──
-  {n:"POIPET 12",          d:"Senin – Minggu",                              t:"12:15",b:"12:30",offDays:[], libur:""},
+  {n:"POIPET 12",          d:"Senin – Minggu",                              t:"12:15",b:"12:30",offDays:[], libur:"",   url:"https://poipetlottery.com/"},
 
   // ── 13:xx ──
-  {n:"TOTOMACAU SIANG",    d:"Senin – Minggu",                              t:"13:00",b:"13:15",offDays:[], libur:""},
-  {n:"SYDNEY LOTTO",       d:"Senin – Minggu",                              t:"13:49",b:"14:05",offDays:[], libur:""},
+  {n:"TOTOMACAU SIANG",    d:"Senin – Minggu",                              t:"13:00",b:"13:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"SYDNEY LOTTO",       d:"Senin – Minggu",                              t:"13:49",b:"14:05",offDays:[], libur:"",   url:"https://sydneyfunlotto.net/"},
 
   // ── 14:xx ──
-  {n:"BRUNEI 14",          d:"Senin – Minggu",                              t:"14:30",b:"14:45",offDays:[], libur:""},
+  {n:"BRUNEI 14",          d:"Senin – Minggu",                              t:"14:30",b:"14:45",offDays:[], libur:"",   url:"https://bruneipools.com/"},
 
   // ── 15:xx ──
-  {n:"CHELSEA 15",         d:"Senin – Minggu",                              t:"15:00",b:"15:15",offDays:[], libur:""},
-  {n:"POIPET 15",          d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:""},
-  {n:"TOTOMALI 1530",      d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:""},
+  {n:"CHELSEA 15",         d:"Senin – Minggu",                              t:"15:00",b:"15:15",offDays:[], libur:"",   url:"https://chelseapools.co.uk/"},
+  {n:"POIPET 15",          d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:"",   url:"https://poipetlottery.com/"},
+  {n:"TOTOMALI 1530",      d:"Senin – Minggu",                              t:"15:15",b:"15:30",offDays:[], libur:"",   url:"https://totomali.com/"},
 
   // ── 16:xx ──
-  {n:"TOTOMACAU SORE",     d:"Senin – Minggu",                              t:"16:00",b:"16:15",offDays:[], libur:""},
-  {n:"HUAHIN 1630",        d:"Senin – Minggu",                              t:"16:15",b:"16:30",offDays:[], libur:""},
+  {n:"TOTOMACAU SORE",     d:"Senin – Minggu",                              t:"16:00",b:"16:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"HUAHIN 1630",        d:"Senin – Minggu",                              t:"16:15",b:"16:30",offDays:[], libur:"",   url:"https://huahinlottery.com/"},
 
   // ── 17:xx ──
-  {n:"KINGKONG 4D SORE",   d:"Senin – Minggu",                              t:"17:00",b:"17:15",offDays:[], libur:""},
-  {n:"SINGAPORE",          d:"Sen,Rab,Kam,Sab,Min · Libur Sel & Jum",      t:"17:30",b:"17:45",offDays:[2,5],  libur:"Selasa & Jumat"},
+  {n:"KINGKONG 4D SORE",   d:"Senin – Minggu",                              t:"17:00",b:"17:15",offDays:[], libur:"",   url:"https://kingkongpools.id/"},
+  {n:"SINGAPORE",          d:"Sen,Rab,Kam,Sab,Min · Libur Sel & Jum",      t:"17:30",b:"17:45",offDays:[2,5],  libur:"Selasa & Jumat",        url:"https://www.singaporepools.com.sg/landing/en/Pages/index.html"},
 
   // ── 18:xx ──
-  {n:"MAGNUM4D",           d:"Rab,Sab & Min · Libur Sen,Sel,Kam & Jum",    t:"18:10",b:"18:40",offDays:[1,2,4,5],libur:"Senin, Selasa, Kamis & Jumat"},
+  {n:"MAGNUM4D",           d:"Rab,Sab & Min · Libur Sen,Sel,Kam & Jum",    t:"18:10",b:"18:40",offDays:[1,2,4,5],libur:"Senin, Selasa, Kamis & Jumat", url:"https://www.magnum4d.my/en"},
 
   // ── 19:xx ──
-  {n:"TOTOMACAU MALAM I",  d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:""},
-  {n:"CHELSEA 19",         d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:""},
-  {n:"POIPET 19",          d:"Senin – Minggu",                              t:"19:30",b:"19:45",offDays:[], libur:""},
-  {n:"PCSO",               d:"Senin – Sabtu · Libur Minggu",               t:"19:50",b:"20:10",offDays:[0],   libur:"Minggu"},
+  {n:"TOTOMACAU MALAM I",  d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"CHELSEA 19",         d:"Senin – Minggu",                              t:"19:00",b:"19:15",offDays:[], libur:"",   url:"https://chelseapools.co.uk/"},
+  {n:"POIPET 19",          d:"Senin – Minggu",                              t:"19:30",b:"19:45",offDays:[], libur:"",   url:"https://poipetlottery.com/"},
+  {n:"PCSO",               d:"Senin – Sabtu · Libur Minggu",               t:"19:50",b:"20:10",offDays:[0],   libur:"Minggu",                url:"https://www.youtube.com/@PCSOGOVPHOfficial"},
 
   // ── 20:xx ──
-  {n:"TOTOMALI 2030",      d:"Senin – Minggu",                              t:"20:15",b:"20:30",offDays:[], libur:""},
+  {n:"TOTOMALI 2030",      d:"Senin – Minggu",                              t:"20:15",b:"20:30",offDays:[], libur:"",   url:"https://totomali.com/"},
 
   // ── 21:xx ──
-  {n:"HUAHIN 2100",        d:"Senin – Minggu",                              t:"20:45",b:"21:00",offDays:[], libur:""},
-  {n:"CHELSEA 21",         d:"Senin – Minggu",                              t:"21:00",b:"21:15",offDays:[], libur:""},
-  {n:"NEVADA",             d:"Senin – Minggu",                              t:"21:15",b:"21:30",offDays:[], libur:""},
-  {n:"BRUNEI 21",          d:"Senin – Minggu",                              t:"21:30",b:"21:45",offDays:[], libur:""},
+  {n:"HUAHIN 2100",        d:"Senin – Minggu",                              t:"20:45",b:"21:00",offDays:[], libur:"",   url:"https://huahinlottery.com/"},
+  {n:"CHELSEA 21",         d:"Senin – Minggu",                              t:"21:00",b:"21:15",offDays:[], libur:"",   url:"https://chelseapools.co.uk/"},
+  {n:"NEVADA",             d:"Senin – Minggu",                              t:"21:15",b:"21:30",offDays:[], libur:"",   url:"https://www.nevadalottery.us/"},
+  {n:"BRUNEI 21",          d:"Senin – Minggu",                              t:"21:30",b:"21:45",offDays:[], libur:"",   url:"https://bruneipools.com/"},
 
   // ── 22:xx ──
-  {n:"TOTOMACAU MALAM II", d:"Senin – Minggu",                              t:"22:00",b:"22:15",offDays:[], libur:""},
-  {n:"POIPET 22",          d:"Senin – Minggu",                              t:"22:30",b:"22:45",offDays:[], libur:""},
-  {n:"HONGKONG LOTTO",     d:"Senin – Minggu",                              t:"22:59",b:"23:15",offDays:[], libur:""},
+  {n:"TOTOMACAU MALAM II", d:"Senin – Minggu",                              t:"22:00",b:"22:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"POIPET 22",          d:"Senin – Minggu",                              t:"22:30",b:"22:45",offDays:[], libur:"",   url:"https://poipetlottery.com/"},
+  {n:"HONGKONG LOTTO",     d:"Senin – Minggu",                              t:"22:59",b:"23:15",offDays:[], libur:"",   url:"https://hongkongfunlotto.net/"},
 
   // ── 23:xx ──
-  {n:"TOTOMACAU MALAM III",d:"Senin – Minggu",                              t:"23:00",b:"23:15",offDays:[], libur:""},
-  {n:"TOTOMALI 2330",      d:"Senin – Minggu",                              t:"23:15",b:"23:30",offDays:[], libur:""},
-  {n:"KINGKONG 4D MALAM",  d:"Senin – Minggu",                              t:"23:30",b:"23:45",offDays:[], libur:""},
+  {n:"TOTOMACAU MALAM III",d:"Senin – Minggu",                              t:"23:00",b:"23:15",offDays:[], libur:"",   url:"https://totomacau-pools.us/"},
+  {n:"TOTOMALI 2330",      d:"Senin – Minggu",                              t:"23:15",b:"23:30",offDays:[], libur:"",   url:"https://totomali.com/"},
+  {n:"KINGKONG 4D MALAM",  d:"Senin – Minggu",                              t:"23:30",b:"23:45",offDays:[], libur:"",   url:"https://kingkongpools.id/"},
 ];
 
 const pad=n=>String(n).padStart(2,'0');
@@ -1067,6 +1112,9 @@ function renderCards(){
       :`<div class="c-times"><div class="ct tc"><div class="ct-lbl">BET CLOSE</div><div class="ct-val">${p.t}<span class="ct-wib">WIB</span></div></div><div class="ct to"><div class="ct-lbl">BUKA KEMBALI</div><div class="ct-val">${p.b}<span class="ct-wib">WIB</span></div></div></div>`;
     const hlb=ih&&!p.hoki?`<div class="c-libur">⚠ LIBUR: ${p.libur}</div>`:'';
     const fb2=hf?`<div class="c-fired">🔔 ALARM SUDAH BUNYI HARI INI</div>`:'';
+    const liveBtn=p.url
+      ?`<a class="c-live-btn" href="${p.url}" target="_blank" rel="noopener noreferrer"><div class="c-live-dot"></div>▶ LIVE RESULT</a>`
+      :'';
     const div=document.createElement('div');
     div.className=`card ${st==='closed'?'closed':st==='soon'?'soon':''}`;
     div.innerHTML=`
@@ -1082,7 +1130,8 @@ function renderCards(){
       <div class="c-div"></div>
       ${hlb}${body}
       ${cd?`<div class="c-cd">${cd}</div>`:''}
-      ${fb2}`;
+      ${fb2}
+      ${liveBtn}`;
     grid.appendChild(div);
   });
   document.getElementById('sO').textContent=nO;
